@@ -1,0 +1,4 @@
+export enum AppActionTypes {
+  ACTION_LOGIN = 'ACTION_LOGIN',
+  ACTION_RESET_TOKEN = 'ACTION_RESET_TOKEN',
+}
