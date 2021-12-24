@@ -1,6 +1,6 @@
-import app from '@/config/app'
+import appConfig from '@/config/app'
 import { useStore } from 'vuex'
-const { HEADER, HEADERPARAMS, TOKENNAME, HTTP_REQUEST_URL } = app
+const { HEADER, HEADERPARAMS, TOKENNAME, HTTP_REQUEST_URL } = appConfig
 /**
  * 发送请求
  */
