@@ -1,12 +1,16 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import appConfig from '@/config/app'
 import { useStore } from 'vuex'
 const { HEADER, HEADERPARAMS, TOKENNAME, HTTP_REQUEST_URL } = appConfig
+type RequestOptionsMethod = 'OPTIONS' | 'GET' | 'HEAD' | 'POST' | 'PUT' | 'DELETE' | 'TRACE' | 'CONNECT'
+type RequestOptionsMethodAll = RequestOptionsMethod | Lowercase<RequestOptionsMethod>
+
 /**
  * 发送请求
  */
 function baseRequest(
   url: string,
-  method: string,
+  method: RequestOptionsMethod,
   data: any,
   { noAuth = false, noVerify = false }: any,
   params: unknown
@@ -37,7 +41,8 @@ function baseRequest(
       method: method || 'GET',
       header: header,
       data: data || {},
-      success: (res) => {
+      success: (res: any) => {
+        console.log('res', res)
         uni.hideLoading()
         res.data.token &&
           res.data.token !== 'null' &&
@@ -45,6 +50,8 @@ function baseRequest(
             token: res.data.token,
           })
         if (noVerify) {
+          reslove(res)
+        } else if (res.statusCode === 200) {
           reslove(res)
         } else {
           reject(res.data.message || '系统错误')
@@ -58,10 +65,23 @@ function baseRequest(
   })
 }
 
-const request = {}
+// const request: Request = {}
+const requestOptions: RequestOptionsMethodAll[] = [
+  'options',
+  'get',
+  'post',
+  'put',
+  'head',
+  'delete',
+  'trace',
+  'connect',
+]
+type Methods = typeof requestOptions[number]
+const request: { [key in Methods]?: Function } = {}
 
-;['options', 'get', 'post', 'put', 'head', 'delete', 'trace', 'connect'].forEach((method) => {
-  request[method] = (api, data, opt, params) => baseRequest(api, method, data, opt || {}, params)
+requestOptions.forEach((method) => {
+  const m = method.toUpperCase as unknown as RequestOptionsMethod
+  request[method] = (api, data, opt, params) => baseRequest(api, m, data, opt || {}, params)
 })
 
 export default request

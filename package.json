@@ -46,6 +46,7 @@
     "@dcloudio/uni-mp-toutiao": "^3.0.0-alpha-3030220211217008",
     "@dcloudio/uni-mp-weixin": "^3.0.0-alpha-3030220211217008",
     "@dcloudio/uni-quickapp-webview": "^3.0.0-alpha-3030220211217008",
+    "mockjs": "^1.1.0",
     "vue": "^3.2.26",
     "vuex": "^4.0.2"
   },
@@ -66,6 +67,7 @@
     "prettier": "^2.5.1",
     "sass": "^1.45.1",
     "typescript": "^4.5.2",
-    "vite": "^2.7.6"
+    "vite": "^2.7.6",
+    "vite-plugin-mock": "^2.9.6"
   }
 }

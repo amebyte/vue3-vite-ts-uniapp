@@ -12,12 +12,18 @@
 import { ref } from 'vue'
 import { AppActionTypes } from '@/store/modules/app/action-types'
 import { useStore } from 'vuex'
+import { fetchUserInfo } from '@/api/user'
 const title = ref('Hello')
 const store = useStore()
 const setToken = () => {
   store.dispatch(AppActionTypes.ACTION_LOGIN, 'token')
   title.value = store.state.app.token
 }
+fetchUserInfo()
+  .then((r) => {
+    console.log('r', r)
+  })
+  .catch((err) => console.log(err))
 </script>
 
 <style lang="scss">
