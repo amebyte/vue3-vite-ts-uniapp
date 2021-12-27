@@ -31,7 +31,8 @@
     "build:quickapp-webview-huawei": "uni build -p quickapp-webview-huawei",
     "build:quickapp-webview-union": "uni build -p quickapp-webview-union",
     "lint": "eslint --ext .ts,tsx,vue src/** --no-error-on-unmatched-pattern --quiet",
-    "lint:fix": "eslint --ext .ts,tsx,vue src/** --no-error-on-unmatched-pattern --fix"
+    "lint:fix": "eslint --ext .ts,tsx,vue src/** --no-error-on-unmatched-pattern --fix",
+    "mock": "cd mock && ts-node-dev mock.ts"
   },
   "dependencies": {
     "@dcloudio/uni-app": "^3.0.0-alpha-3030220211217008",
@@ -46,9 +47,17 @@
     "@dcloudio/uni-mp-toutiao": "^3.0.0-alpha-3030220211217008",
     "@dcloudio/uni-mp-weixin": "^3.0.0-alpha-3030220211217008",
     "@dcloudio/uni-quickapp-webview": "^3.0.0-alpha-3030220211217008",
-    "mockjs": "^1.1.0",
     "vue": "^3.2.26",
-    "vuex": "^4.0.2"
+    "vuex": "^4.0.2",
+    "koa": "^2.13.0",
+    "koa-body": "^4.2.0",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^10.0.0",
+    "koa2-cors": "^2.0.6",
+    "lodash": "^4.17.20",
+    "log4js": "^6.3.0",
+    "faker": "^5.1.0",
+    "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
     "@dcloudio/types": "^2.5.14",
@@ -60,6 +69,11 @@
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^9.1.0",
     "@vuedx/typescript-plugin-vue": "^0.7.4",
+    "@types/koa": "^2.11.6",
+    "@types/koa-logger": "^3.1.1",
+    "@types/koa-router": "^7.4.1",
+    "@types/koa2-cors": "^2.0.1",
+    "@types/faker": "^5.1.5",
     "autoprefixer": "^10.4.0",
     "eslint": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
@@ -68,6 +82,6 @@
     "sass": "^1.45.1",
     "typescript": "^4.5.2",
     "vite": "^2.7.6",
-    "vite-plugin-mock": "^2.9.6"
+    "ts-node-dev": "^1.0.0"
   }
 }
