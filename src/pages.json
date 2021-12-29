@@ -4,7 +4,8 @@
     {
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "商城首页"
+        "navigationBarTitleText": "商城首页",
+        "navigationStyle": "custom"
       }
     },
     {
