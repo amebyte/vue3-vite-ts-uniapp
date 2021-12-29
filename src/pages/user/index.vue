@@ -9,27 +9,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, getCurrentInstance } from 'vue'
+import { ref } from 'vue'
 import { AppActionTypes } from '@/store/modules/app/action-types'
 import { useStore } from 'vuex'
-import { fetchUserInfo } from '@/api/user'
-const title = ref('Hello')
+const title = ref('会员中心')
 const store = useStore()
 const setToken = () => {
   store.dispatch(AppActionTypes.ACTION_LOGIN, 'token')
   title.value = store.state.app.token
 }
-const { proxy } = getCurrentInstance() as any
-console.log('ctx', proxy, proxy.$StatusBar, proxy.$test)
-onMounted(() => {
-  console.log('StatusBar', proxy.$StatusBar)
-})
-
-fetchUserInfo()
-  .then((r) => {
-    console.log('r', r)
-  })
-  .catch((err) => console.log(err))
 </script>
 
 <style lang="scss">
