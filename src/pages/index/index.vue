@@ -20,6 +20,7 @@ import { ref, getCurrentInstance, reactive } from 'vue'
 import { AppActionTypes } from '@/store/modules/app/action-types'
 import { useStore } from 'vuex'
 import { fetchUserInfo } from '@/api/user'
+import AdSwiper from '@/components/ad-swiper/index.vue'
 const state = reactive({
   showBg: false,
   display: '',
@@ -43,11 +44,11 @@ const scroll = function (e) {
 onPageScroll((e) => {
   scroll(e)
 })
-fetchUserInfo()
-  .then((r) => {
-    console.log('r', r)
-  })
-  .catch((err) => console.log(err))
+// fetchUserInfo()
+//   .then((r) => {
+//     console.log('r', r)
+//   })
+//   .catch((err) => console.log(err))
 </script>
 
 <style lang="scss">

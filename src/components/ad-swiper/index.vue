@@ -30,12 +30,6 @@
               @ended="bindEnd"
               @pause="bindPause"
             ></video>
-            <!-- <view class="poster" v-if="controls">
-                			<image class="image" :src="imgUrls[0].src"></image>
-                		</view> -->
-            <!-- <view class="stop" v-if="controls" @tap="bindPause">
-                			<image class="image" src="../../static/images/stop.png"></image>
-                		</view> -->
           </view>
         </swiper-item>
         <swiper-item v-else @click="openLink(index)">
@@ -53,7 +47,7 @@
 </template>
 
 <script lang="ts">
-import { PropType, defineComponent } from 'vue'
+import { PropType, ref, toRefs, defineComponent, reactive } from 'vue'
 interface imgUrlsType {
   type: string
   src: string
@@ -63,7 +57,7 @@ export default defineComponent({
   props: {
     imgUrls: {
       type: Array as PropType<Array<imgUrlsType>>,
-      default: function () {
+      default: () => {
         return []
       },
     },
@@ -96,45 +90,52 @@ export default defineComponent({
       default: false,
     },
   },
-  data() {
-    return {
-      circular: true,
-      autoplay: true,
-      interval: 3000,
-      duration: 500,
-      currents: '1',
-      controls: true,
+  setup(props, {emit}) {
+      let state = reactive({
+          circular: true,
+          autoplay: true,
+          interval: 3000,
+          duration: 500,
+          currents: '1',
+          controls: true
+      })
+
+    const bindPause = function () {
+      state.autoplay = false
     }
-  },
-  methods: {
-    bindPause: function () {
-      // this.videoContext.play();
-      // this.$set(this, 'controls', false)
-      this.autoplay = false
-    },
-    change(e) {
-      this.$emit('update:current', e.detail.current)
-      this.$set(this, 'currents', e.detail.current + 1)
-    },
-    openLink(i) {
-      this.$emit('open', i)
-    },
+    const change = (e) => {
+      emit('update:current', e.detail.current)
+      state.currents = e.detail.current + 1
+    }
+    const openLink = (i) => {
+      emit('open', i)
+    }
 
-    bindPlay() {
-      this.autoplay = false
-    },
+    const bindPlay = () => {
+      state.autoplay = false
+    }
 
-    bindEnd() {
-      this.autoplay = true
-    },
+    const bindEnd = () => {
+      state.autoplay = true
+    }
 
-    goToGoods(link) {
+    const goToGoods = (link) => {
       if (link) {
         uni.navigateTo({
           url: link,
         })
       }
-    },
-  },
+    }
+
+    return {
+      ...toRefs(state),
+      bindPause,
+      change,
+      openLink,
+      bindPlay,
+      bindEnd,
+      goToGoods
+    }
+  }
 })
 </script>
