@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { onPageScroll, onShow, onHide } from '@dcloudio/uni-app'
+import { onPageScroll, onLoad, onShow, onHide } from '@dcloudio/uni-app'
 import { ref, getCurrentInstance, reactive, toRef, computed } from 'vue'
 import { AppActionTypes } from '@/store/modules/app/action-types'
 import { useStore, mapActions } from 'vuex'
@@ -59,6 +59,12 @@ const scroll = function (e) {
 }
 onPageScroll((e) => {
   scroll(e)
+})
+onLoad(() => {
+  state.navTop = proxy.$StatusBar
+  // #ifdef MP-WEIXIN
+  state.navHeight = proxy.$CustomBar
+  // #endif
 })
 // fetchUserInfo()
 //   .then((r) => {
