@@ -32,16 +32,18 @@ type menuType = {
 export default defineComponent({
   name: 'MenusComp',
   props: {
-    dataConfig: {
+    menusConfig: {
       type: Array as PropType<Array<menuType>>,
-      default: () => [],
+      default: () => {
+        return []
+      },
     },
   },
   setup(props) {
-    console.log('props.dataConfig222', props.dataConfig)
+    console.log('props.dataConfig222', props.menusConfig)
     const menus = computed(() => {
-      console.log('props.dataConfig', props.dataConfig)
-      let m = props.dataConfig
+      console.log('props.dataConfig', props.menusConfig)
+      let m = props.menusConfig
       // #ifdef MP
       m.forEach((item) => {
         item.url = '../' + item.url

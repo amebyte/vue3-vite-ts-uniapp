@@ -16,7 +16,7 @@
         <ad-swiper :img-urls="indexBanner"></ad-swiper>
 
         <view style="padding: 20rpx">
-          <menus-comp :data-config="state.quickMenu"></menus-comp>
+          <menus-comp :menus-config="state.quickMenu"></menus-comp>
         </view>
       </view>
     </view>
@@ -103,7 +103,8 @@ const fetchBanner = mapActions(['banner', BannerActionTypes.ACTION_GET_BANNER]).
 fetchBanner()
 
 const indexBanner = computed(() => store.state.banner.indexBanner)
-console.log('bannerState', indexBanner.value)
+const quickMenu = computed(() => state.quickMenu)
+console.log('bannerState', indexBanner.value, quickMenu.value)
 const setToken = () => {
   store.dispatch(AppActionTypes.ACTION_LOGIN, 'token')
   title.value = store.state.app.token
