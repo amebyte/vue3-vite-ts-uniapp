@@ -1,10 +1,10 @@
 import { createStore } from 'vuex'
 import { store as app, AppState, AppStore } from '@/store/modules/app'
-import { store as banner, BannerState, BannerStore } from '@/store/modules/banner'
+import { store as banner, BannerState, BannerStore, imgUrlsType } from '@/store/modules/banner'
 import getters from './getters'
 export interface RootState {
   app: AppState
-  banner: BannerState<any>
+  banner: BannerState<imgUrlsType>
 }
 export type Store = AppStore<Pick<RootState, 'app'>> & BannerStore<Pick<RootState, 'banner'>>
 

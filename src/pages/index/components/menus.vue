@@ -48,8 +48,10 @@
 
 <script lang="ts">
 import { PropType, ref, toRefs, defineComponent, reactive } from 'vue'
-import { imgUrlsType } from '@/store/modules/banner'
-
+interface imgUrlsType {
+  type: string
+  src: string
+}
 export default defineComponent({
   name: 'AdSwiper',
   props: {

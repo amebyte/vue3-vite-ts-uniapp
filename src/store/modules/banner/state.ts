@@ -1,3 +1,7 @@
+export interface imgUrlsType {
+  type: string
+  src: string
+}
 export interface BannerState<T> {
   indexBanner: Array<T>
   seckillBanner: Array<T>
@@ -9,7 +13,7 @@ export interface BannerState<T> {
   integralBanner: Array<T>
   isLoaded: boolean
 }
-export const state: BannerState<any> = {
+export const state: BannerState<imgUrlsType> = {
   indexBanner: [], // 首页的banner列表
   seckillBanner: [], // 秒杀的banner列表
   groupBanner: [], // 拼团的banner列表

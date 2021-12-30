@@ -1,20 +1,20 @@
 import { ActionTree, ActionContext } from 'vuex'
 import { RootState } from '@/store'
 import { fetchBannerList } from '@/api/banner'
-import { BannerState } from './state'
+import { BannerState, imgUrlsType } from './state'
 import { Mutations } from './mutations'
 import { BannerActionTypes } from './action-types'
 import { BannerMutationTypes } from './mutation-types'
 
 type AugmentedActionContext = {
   commit<K extends keyof Mutations>(key: K, payload: Parameters<Mutations[K]>[1]): ReturnType<Mutations[K]>
-} & Omit<ActionContext<BannerState<any>, RootState>, 'commit'>
+} & Omit<ActionContext<BannerState<imgUrlsType>, RootState>, 'commit'>
 
 export interface Actions {
   [BannerActionTypes.ACTION_GET_BANNER]({ commit }: AugmentedActionContext, bannerAddress: number): void
 }
 
-export const actions: ActionTree<BannerState<any>, RootState> & Actions = {
+export const actions: ActionTree<BannerState<imgUrlsType>, RootState> & Actions = {
   async [BannerActionTypes.ACTION_GET_BANNER]({ commit, state }: AugmentedActionContext, bannerAddress = 10) {
     // 只调一次，调用过了则不再调用
     if (state.isLoaded) return
