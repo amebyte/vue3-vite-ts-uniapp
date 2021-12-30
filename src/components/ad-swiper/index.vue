@@ -90,6 +90,7 @@ export default defineComponent({
   },
   emits: ['open', 'update:current'],
   setup(props, { emit }) {
+    console.log('propsxxxximgUrls', props.imgUrls)
     let state = reactive({
       circular: true,
       autoplay: true,
