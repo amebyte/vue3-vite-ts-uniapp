@@ -1,219 +1,120 @@
 <template>
-  <view class="ad-swiper">
-    <swiper
-      :indicator-dots="indicatorDots"
-      indicator-active-color="#e93323"
-      :autoplay="autoplay"
-      :circular="circular"
-      :disable-touch="disableTouch"
-      :current="current"
-      :interval="interval"
-      :duration="duration"
-      :style="'height:' + imageH + 'rpx;'"
-      @change="change"
-    >
-      <block v-for="(item, index) in imgUrls" :key="index">
-        <swiper-item v-if="item.type == 'video'" :style="'height:' + imageH + 'rpx;'">
-          <view class="item">
-            <video
-              id="myVideo"
-              :src="item.src"
-              objectFit="cover"
-              controls
-              style="width: 100%; height: 100%"
-              show-center-play-btn
-              show-mute-btn="true"
-              auto-pause-if-navigate
-              :custom-cache="false"
-              :enable-progress-gesture="false"
-              @play="bindPlay"
-              @ended="bindEnd"
-              @pause="bindPause"
-            ></video>
+  <view>
+    <view v-if="menus.length" class="nav acea-row acea-row">
+      <block v-for="(item, index) in menus" :key="index">
+        <view class="item" @click="menusTap(item.path)">
+          <view class="pictrue">
+            <image :src="item.url"></image>
           </view>
-        </swiper-item>
-        <swiper-item v-else @click="openLink(index)">
-          <image
-            :src="item[imgKey]"
-            class="slide-image"
-            :mode="mode"
-            :style="'height:' + imageH + 'rpx;'"
-            :class="radius ? 'image-radius' : ''"
-          />
-        </swiper-item>
+          <view class="menu-txt">{{ item.title }}</view>
+        </view>
       </block>
-    </swiper>
+    </view>
+
+    <view v-else class="nav acea-row acea-row">
+      <view class="item">
+        <view class="pictrue default">
+          <text class="iconfont icon-icon25201"></text>
+        </view>
+        <view class="menu-txt">默认</view>
+      </view>
+    </view>
   </view>
 </template>
 
 <script lang="ts">
-import { PropType, ref, toRefs, defineComponent, reactive } from 'vue'
-interface imgUrlsType {
-  type: string
-  src: string
+import { PropType, defineComponent, computed } from 'vue'
+type menuType = {
+  url: string
+  title: string
+  path: string
 }
 export default defineComponent({
-  name: 'AdSwiper',
+  name: 'MenusComp',
   props: {
-    imgUrls: {
-      type: Array as PropType<Array<imgUrlsType>>,
-      default: () => {
-        return []
-      },
-    },
-    current: {
-      type: Number,
-      default: 0,
-    },
-    imageH: {
-      type: Number,
-      default: 600,
-    },
-    radius: {
-      type: Boolean,
-      default: false,
-    },
-    mode: {
-      type: String,
-      default: 'aspectFill',
-    },
-    imgKey: {
-      type: String,
-      default: 'src',
-    },
-    indicatorDots: {
-      type: Boolean,
-      default: true,
-    },
-    disableTouch: {
-      type: Boolean,
-      default: false,
+    dataConfig: {
+      type: Array as PropType<Array<menuType>>,
+      default: () => [],
     },
   },
-  emits: ['open', 'update:current'],
-  setup(props, { emit }) {
-    let state = reactive({
-      circular: true,
-      autoplay: true,
-      interval: 3000,
-      duration: 500,
-      currents: 1,
-      controls: true,
+  setup(props) {
+    const menus = computed(() => {
+      let m = props.dataConfig
+      // #ifdef MP
+      m.forEach((item) => {
+        item.url = '../' + item.url
+      })
+      // #endif
+      return m
     })
 
-    const bindPause = function () {
-      state.autoplay = false
-    }
-    const change = (e: { detail: { current: number } }) => {
-      emit('update:current', e.detail.current)
-      state.currents = e.detail.current + 1
-    }
-    const openLink = (i: any) => {
-      emit('open', i)
-    }
-
-    const bindPlay = () => {
-      state.autoplay = false
-    }
-
-    const bindEnd = () => {
-      state.autoplay = true
-    }
-
-    const goToGoods = (link: any) => {
-      if (link) {
+    const menusTap = (url) => {
+      if (url.indexOf('http') != -1) {
+        // #ifdef H5
+        location.href = url
+        // #endif
+      } else {
         uni.navigateTo({
-          url: link,
+          url: url,
         })
       }
     }
 
     return {
-      ...toRefs(state),
-      bindPause,
-      change,
-      openLink,
-      bindPlay,
-      bindEnd,
-      goToGoods,
+      menus,
+      menusTap,
     }
   },
 })
 </script>
 
-<style scoped lang="scss">
-.ad-swiper {
-  width: 100%;
-  // height: 600rpx;
-  position: relative;
-}
-
-.ad-swiper swiper {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.ad-swiper .slide-image {
-  width: 100%;
-  // height: 600rpx;
-}
-
-.image-radius {
-  border-radius: 20rpx;
-}
-
-.ad-swiper .pages {
-  position: absolute;
+<style lang="scss">
+.nav {
   background-color: #fff;
-  height: 34rpx;
-  padding: 0 10rpx;
-  border-radius: 3rpx;
-  right: 30rpx;
-  bottom: 30rpx;
-  line-height: 34rpx;
-  font-size: 24rpx;
-  color: #050505;
-}
+  padding-bottom: 30rpx;
+  border-radius: 16rpx;
 
-#myVideo {
-  width: 100%;
-  height: 100%;
-}
+  .item {
+    margin-top: 30rpx;
+    width: 20%;
+    text-align: center;
+    font-size: 24rpx;
 
-.ad-swiper .item {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
+    .pictrue {
+      width: 82rpx;
+      height: 82rpx;
+      margin: 0 auto;
 
-.ad-swiper .item .poster {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 750rpx;
-  width: 100%;
-  z-index: 9;
-}
+      &.default {
+        background-color: #ccc;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 90rpx;
 
-.ad-swiper .item .poster .image {
-  width: 100%;
-  height: 100%;
-}
+        .iconfont {
+          font-size: 40rpx;
+        }
+      }
 
-.ad-swiper .item .stop {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 136rpx;
-  height: 136rpx;
-  margin-top: -68rpx;
-  margin-left: -68rpx;
-  z-index: 9;
-}
+      image {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+    }
 
-.ad-swiper .item .stop .image {
-  width: 100%;
-  height: 100%;
+    .menu-txt {
+      margin-top: 15rpx;
+    }
+
+    &.four {
+      width: 25%;
+
+      .pictrue {
+        width: 90rpx;
+        height: 90rpx;
+      }
+    }
+  }
 }
 </style>
