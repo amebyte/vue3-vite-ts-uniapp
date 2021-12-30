@@ -90,24 +90,25 @@ export default defineComponent({
       default: false,
     },
   },
-  setup(props, {emit}) {
-      let state = reactive({
-          circular: true,
-          autoplay: true,
-          interval: 3000,
-          duration: 500,
-          currents: '1',
-          controls: true
-      })
+  emits: ['open', 'update:current'],
+  setup(props, { emit }) {
+    let state = reactive({
+      circular: true,
+      autoplay: true,
+      interval: 3000,
+      duration: 500,
+      currents: 1,
+      controls: true,
+    })
 
     const bindPause = function () {
       state.autoplay = false
     }
-    const change = (e) => {
+    const change = (e: { detail: { current: number } }) => {
       emit('update:current', e.detail.current)
       state.currents = e.detail.current + 1
     }
-    const openLink = (i) => {
+    const openLink = (i: any) => {
       emit('open', i)
     }
 
@@ -119,7 +120,7 @@ export default defineComponent({
       state.autoplay = true
     }
 
-    const goToGoods = (link) => {
+    const goToGoods = (link: any) => {
       if (link) {
         uni.navigateTo({
           url: link,
@@ -134,8 +135,85 @@ export default defineComponent({
       openLink,
       bindPlay,
       bindEnd,
-      goToGoods
+      goToGoods,
     }
-  }
+  },
 })
 </script>
+
+<style scoped lang="scss">
+.ad-swiper {
+  width: 100%;
+  // height: 600rpx;
+  position: relative;
+}
+
+.ad-swiper swiper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.ad-swiper .slide-image {
+  width: 100%;
+  // height: 600rpx;
+}
+
+.image-radius {
+  border-radius: 20rpx;
+}
+
+.ad-swiper .pages {
+  position: absolute;
+  background-color: #fff;
+  height: 34rpx;
+  padding: 0 10rpx;
+  border-radius: 3rpx;
+  right: 30rpx;
+  bottom: 30rpx;
+  line-height: 34rpx;
+  font-size: 24rpx;
+  color: #050505;
+}
+
+#myVideo {
+  width: 100%;
+  height: 100%;
+}
+
+.ad-swiper .item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.ad-swiper .item .poster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 750rpx;
+  width: 100%;
+  z-index: 9;
+}
+
+.ad-swiper .item .poster .image {
+  width: 100%;
+  height: 100%;
+}
+
+.ad-swiper .item .stop {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 136rpx;
+  height: 136rpx;
+  margin-top: -68rpx;
+  margin-left: -68rpx;
+  z-index: 9;
+}
+
+.ad-swiper .item .stop .image {
+  width: 100%;
+  height: 100%;
+}
+</style>

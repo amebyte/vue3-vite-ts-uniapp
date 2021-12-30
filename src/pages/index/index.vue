@@ -11,15 +11,22 @@
       </view>
       <text>{{ title }}</text>
     </view>
+    <view style="width: 100%">
+      <view>
+        <ad-swiper :img-urls="indexBanner"></ad-swiper>
+      </view>
+    </view>
   </view>
 </template>
 
 <script setup lang="ts">
 import { onPageScroll, onShow, onHide } from '@dcloudio/uni-app'
-import { ref, getCurrentInstance, reactive } from 'vue'
+import { ref, getCurrentInstance, reactive, toRef, computed } from 'vue'
 import { AppActionTypes } from '@/store/modules/app/action-types'
-import { useStore } from 'vuex'
+import { useStore, mapActions } from 'vuex'
 import { fetchUserInfo } from '@/api/user'
+import { BannerActionTypes } from '@/store/modules/banner/action-types'
+import { useMapState } from '@/hooks/useMapState'
 import AdSwiper from '@/components/ad-swiper/index.vue'
 const state = reactive({
   showBg: false,
@@ -30,6 +37,15 @@ const state = reactive({
 })
 const title = ref('Hello')
 const store = useStore()
+console.log('store', store)
+
+const fetchBanner = mapActions(['banner', BannerActionTypes.ACTION_GET_BANNER]).ACTION_GET_BANNER.bind({
+  $store: store,
+})
+fetchBanner()
+
+const indexBanner = computed(() => store.state.banner.indexBanner)
+console.log('bannerState', indexBanner.value)
 const setToken = () => {
   store.dispatch(AppActionTypes.ACTION_LOGIN, 'token')
   title.value = store.state.app.token

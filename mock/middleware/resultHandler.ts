@@ -5,6 +5,8 @@ export type ResultInfo = {
   code: number
   msg?: string
   data?: any
+  token?: string
+  message?: string
   err?: any
 }
 

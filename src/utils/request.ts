@@ -52,7 +52,7 @@ function baseRequest(
         if (noVerify) {
           reslove(res)
         } else if (res.statusCode === 200) {
-          reslove(res)
+          reslove(res.data)
         } else {
           reject(res.data.message || '系统错误')
         }
