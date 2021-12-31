@@ -40,9 +40,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    console.log('props.dataConfig222', props.menusConfig)
     const menus = computed(() => {
-      console.log('props.dataConfig', props.menusConfig)
       let m = props.menusConfig
       // #ifdef MP
       m.forEach((item) => {
@@ -51,7 +49,7 @@ export default defineComponent({
       // #endif
       return m
     })
-    console.log('menus', menus.value)
+
     const menusTap = (url) => {
       if (url.indexOf('http') != -1) {
         // #ifdef H5

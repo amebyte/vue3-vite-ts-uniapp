@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import appConfig from '@/config/app'
+import { HEADER, HEADERPARAMS, TOKENNAME, HTTP_REQUEST_URL } from '@/config/app'
 import { useStore } from 'vuex'
-const { HEADER, HEADERPARAMS, TOKENNAME, HTTP_REQUEST_URL } = appConfig
 type RequestOptionsMethod = 'OPTIONS' | 'GET' | 'HEAD' | 'POST' | 'PUT' | 'DELETE' | 'TRACE' | 'CONNECT'
 type RequestOptionsMethodAll = RequestOptionsMethod | Lowercase<RequestOptionsMethod>
 
