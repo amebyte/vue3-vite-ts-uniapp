@@ -15,6 +15,12 @@
       <view>
         <ad-swiper :img-urls="indexBanner"></ad-swiper>
 
+        <!-- #ifdef MP -->
+        <view class="header-search" :style="{ display: state.display }">
+          <HeaderSearch></HeaderSearch>
+        </view>
+        <!-- #endif -->
+
         <view style="padding: 20rpx">
           <menus-comp :menus-config="state.quickMenu"></menus-comp>
           <!--秒杀-->
@@ -42,13 +48,15 @@ import { useStore, mapActions } from 'vuex'
 import { BannerActionTypes } from '@/store/modules/banner/action-types'
 import { useMapState } from '@/hooks/useMapState'
 import AdSwiper from '@/components/ad-swiper/index.vue'
+import HeaderSearch from './components/HeaderSearch.vue'
 import MenusComp from './components/MenusComp.vue'
 import NewGoods from './components/newGoods.vue'
-import { IMAGEURL } from '@/config/app'
+import { IMAGE_URL, APP_NAME } from '@/config/app'
 export default defineComponent({
   name: 'IndexPage',
   components: {
     AdSwiper,
+    HeaderSearch,
     MenusComp,
     NewGoods,
   },
@@ -57,9 +65,9 @@ export default defineComponent({
   },
   setup() {
     const state = reactive({
-      imageUrl: IMAGEURL,
+      imageUrl: IMAGE_URL,
       showBg: false,
-      display: '',
+      display: 'block',
       navTop: 0,
       navHeight: 40,
       currentCity: '佛山市',
@@ -117,7 +125,7 @@ export default defineComponent({
       ],
     })
     // console.log('statestate', state.quickMenu)
-    const title = ref('美物纪优选')
+    const title = ref(APP_NAME)
     const newGoodsShow = ref(true)
     const store = useStore()
     // console.log('store', store)
