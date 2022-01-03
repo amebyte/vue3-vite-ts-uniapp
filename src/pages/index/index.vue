@@ -1,7 +1,7 @@
 <template>
-  <view class="content">
+  <view class="container">
     <view
-      class="home-header"
+      class="header"
       :style="'padding-top:' + state.navTop + 'px;height:' + state.navHeight + 'px'"
       :class="{ bg: state.showBg }"
     >
@@ -11,19 +11,22 @@
       </view>
       <text>{{ title }}</text>
     </view>
-    <view style="width: 100%">
-      <view>
-        <ad-swiper :img-urls="indexBanner"></ad-swiper>
+    <view class="content">
+      <!--轮播图 start-->
+      <ad-swiper :img-urls="indexBanner"></ad-swiper>
+      <!--轮播图 end-->
+      <!--搜索 start-->
+      <view class="header-search" :style="{ display: state.display }">
+        <HeaderSearch></HeaderSearch>
+      </view>
+      <!--搜索 end-->
 
-        <!-- #ifdef MP -->
-        <view class="header-search" :style="{ display: state.display }">
-          <HeaderSearch></HeaderSearch>
-        </view>
-        <!-- #endif -->
+      <!--消息 start-->
+      <MessageComp />
+      <!--消息 end-->
 
-        <view style="padding: 20rpx">
-          <menus-comp :menus-config="state.quickMenu"></menus-comp>
-        </view>
+      <view style="padding: 20rpx">
+        <menus-comp :menus-config="state.quickMenu"></menus-comp>
       </view>
     </view>
   </view>
@@ -38,6 +41,7 @@ import { BannerActionTypes } from '@/store/modules/banner/action-types'
 import { useMapState } from '@/hooks/useMapState'
 import AdSwiper from '@/components/ad-swiper/index.vue'
 import HeaderSearch from './components/HeaderSearch.vue'
+import MessageComp from './components/MessageComp.vue'
 import MenusComp from './components/MenusComp.vue'
 import { IMAGE_URL, APP_NAME } from '@/config/app'
 export default defineComponent({
@@ -45,6 +49,7 @@ export default defineComponent({
   components: {
     AdSwiper,
     HeaderSearch,
+    MessageComp,
     MenusComp,
   },
   onPageScroll() {
@@ -86,9 +91,9 @@ export default defineComponent({
         },
       ],
     })
-    // console.log('statestate', state.quickMenu)
+
     const title = ref(APP_NAME)
-    const newGoodsShow = ref(true)
+
     const store = useStore()
     // console.log('store', store)
 
@@ -130,7 +135,6 @@ export default defineComponent({
     return {
       state,
       title,
-      newGoodsShow,
       indexBanner,
     }
   },
@@ -138,13 +142,14 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.content {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  .home-header {
+  background-color: #ebfffd;
+  .header {
     position: fixed;
     top: 0;
     left: 0;
@@ -169,6 +174,9 @@ export default defineComponent({
         color: #fff;
       }
     }
+  }
+  .content {
+    width: 100%;
   }
 }
 </style>
