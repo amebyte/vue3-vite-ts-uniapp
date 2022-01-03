@@ -23,18 +23,7 @@
 
         <view style="padding: 20rpx">
           <menus-comp :menus-config="state.quickMenu"></menus-comp>
-          <!--秒杀-->
-          <navigator url="/pages/activity/goods-seckill/index" hover-class="navigator-hover" style="margin-top: 20rpx">
-            <image
-              :src="state.imageUrl + '/shop-uniapp/miaosha.png'"
-              mode="scaleToFill"
-              style="width: 100%; height: 200rpx"
-            ></image>
-          </navigator>
         </view>
-
-        <!--新用户专享-->
-        <NewGoods :is-show="newGoodsShow" />
       </view>
     </view>
   </view>
@@ -50,7 +39,6 @@ import { useMapState } from '@/hooks/useMapState'
 import AdSwiper from '@/components/ad-swiper/index.vue'
 import HeaderSearch from './components/HeaderSearch.vue'
 import MenusComp from './components/MenusComp.vue'
-import NewGoods from './components/newGoods.vue'
 import { IMAGE_URL, APP_NAME } from '@/config/app'
 export default defineComponent({
   name: 'IndexPage',
@@ -58,7 +46,6 @@ export default defineComponent({
     AdSwiper,
     HeaderSearch,
     MenusComp,
-    NewGoods,
   },
   onPageScroll() {
     // console.log('onPageScroll')
@@ -73,54 +60,29 @@ export default defineComponent({
       currentCity: '佛山市',
       quickMenu: [
         {
-          url: '../../static/images/meviky/home-icon-01.svg',
-          title: '附近油站',
+          url: '../../static/images/skip/activity.png',
+          title: '活动',
           path: '/pages/shop/station/index',
         },
         {
-          url: '../../static/images/meviky/home-icon-02.svg',
-          title: '精选服务',
+          url: '../../static/images/skip/curriculum.png',
+          title: '课程',
           path: '/pages/goods/goods-search/index?isSelected=true',
         },
         {
-          url: '../../static/images/meviky/home-icon-03.svg',
-          title: '生活缴费',
+          url: '../../static/images/skip/AAndQ.png',
+          title: '答疑',
           path: '/pages/living/index',
         },
         {
-          url: '../../static/images/meviky/home-icon-04.svg',
-          title: '领券中心',
+          url: '../../static/images/skip/brand.png',
+          title: '品牌',
           path: '/pages/coupon/list',
         },
         {
-          url: '../../static/images/meviky/home-icon-05.svg',
-          title: '附近门店',
+          url: '../../static/images/skip/cooperate.png',
+          title: '合作',
           path: '/pages/shop/near-shop/index',
-        },
-        {
-          url: '../../static/images/meviky/home-icon-06.svg',
-          title: '家用电器',
-          path: '/pages/goods/goods-search/index',
-        },
-        {
-          url: '../../static/images/meviky/home-icon-07.svg',
-          title: '汽车用品',
-          path: '/pages/goods/goods-search/index',
-        },
-        {
-          url: '../../static/images/meviky/home-icon-08.svg',
-          title: '家居家纺',
-          path: '/pages/goods/goods-search/index',
-        },
-        {
-          url: '../../static/images/meviky/home-icon-09.svg',
-          title: '日常用品',
-          path: '/pages/goods/goods-search/index',
-        },
-        {
-          url: '../../static/images/meviky/home-icon-10.svg',
-          title: '更多服务',
-          path: '/pages/good/list',
         },
       ],
     })
@@ -203,6 +165,9 @@ export default defineComponent({
       font-size: 24rpx;
       position: absolute;
       left: 30rpx;
+      .icon-map-coordinates {
+        color: #fff;
+      }
     }
   }
 }
