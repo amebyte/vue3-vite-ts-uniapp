@@ -22,7 +22,7 @@
       <!--搜索 end-->
 
       <!--消息 start-->
-      <MessageComp />
+      <MessageComp v-if="isShowMessage" @close-message="closeMessage"> </MessageComp>
       <!--消息 end-->
 
       <view style="padding: 20rpx">
@@ -94,6 +94,11 @@ export default defineComponent({
 
     const title = ref(APP_NAME)
 
+    let isShowMessage = ref(true)
+    const closeMessage = () => {
+      isShowMessage.value = false
+    }
+
     const store = useStore()
     // console.log('store', store)
 
@@ -136,6 +141,8 @@ export default defineComponent({
       state,
       title,
       indexBanner,
+      isShowMessage,
+      closeMessage,
     }
   },
 })
