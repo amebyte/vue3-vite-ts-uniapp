@@ -22,7 +22,7 @@
       <!--搜索 end-->
 
       <!--消息 start-->
-      <MessageComp v-if="isShowMessage" @close-message="closeMessage"> </MessageComp>
+      <MessageComp v-if="isShowMessage" @closeMessage="closeMessage"> </MessageComp>
       <!--消息 end-->
 
       <view style="padding: 20rpx">
