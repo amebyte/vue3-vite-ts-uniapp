@@ -71,8 +71,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+@import '@/static/css/variable.scss';
 .nav {
-  background-color: #fff;
+  background-color: $background-color;
   padding-bottom: 30rpx;
   border-radius: 16rpx;
 
@@ -107,6 +108,7 @@ export default defineComponent({
 
     .menu-txt {
       margin-top: 15rpx;
+      color: $theme-font-color;
     }
 
     &.four {

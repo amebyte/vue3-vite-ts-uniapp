@@ -13,6 +13,7 @@ const closeMessage = () => {
 }
 </script>
 <style lang="scss">
+@import '@/static/css/variable.scss';
 .wrapper {
   margin-top: 20rpx;
   margin-left: 20rpx;
@@ -26,11 +27,13 @@ const closeMessage = () => {
   display: flex;
   .content {
     font-size: 24rpx;
-    color: #00796b;
+    color: $theme-font-color;
     font-weight: bold;
+    padding-left: 10rpx;
+    padding-right: 10rpx;
   }
   .iconfont {
-    color: #00796b;
+    color: $theme-font-color;
   }
 }
 </style>

@@ -149,13 +149,14 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+@import '@/static/css/variable.scss';
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  background-color: #ebfffd;
+  background-color: $background-color;
   .header {
     position: fixed;
     top: 0;
