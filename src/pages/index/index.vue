@@ -28,6 +28,7 @@
       <view style="padding: 20rpx">
         <menus-comp :menus-config="state.quickMenu"></menus-comp>
       </view>
+      <view style="padding: 0 20rpx 20rpx 20rpx"><MenusTwo /></view>
     </view>
   </view>
 </template>
@@ -43,6 +44,7 @@ import AdSwiper from '@/components/ad-swiper/index.vue'
 import HeaderSearch from './components/HeaderSearch.vue'
 import MessageComp from './components/MessageComp.vue'
 import MenusComp from './components/MenusComp.vue'
+import MenusTwo from './components/MenusTwo.vue'
 import { IMAGE_URL, APP_NAME } from '@/config/app'
 export default defineComponent({
   name: 'IndexPage',
@@ -51,6 +53,7 @@ export default defineComponent({
     HeaderSearch,
     MessageComp,
     MenusComp,
+    MenusTwo,
   },
   onPageScroll() {
     // console.log('onPageScroll')
