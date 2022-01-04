@@ -12,6 +12,9 @@
       <ad-swiper :img-urls="indexBanner" :image-h="173"></ad-swiper>
     </view>
     <!--轮播图 end-->
+    <view v-show="currNavId === 1">
+      <ListStyle1 />
+    </view>
   </view>
 </template>
 
@@ -20,6 +23,7 @@ import { ref, computed } from 'vue'
 import { useStore, mapActions } from 'vuex'
 import { BannerActionTypes } from '@/store/modules/banner/action-types'
 import AdSwiper from '@/components/ad-swiper/index.vue'
+import ListStyle1 from './components/ListStyle1.vue'
 const navList = ref([
   { name: '精品课程', id: 1 },
   { name: '水培商品', id: 2 },
@@ -38,7 +42,7 @@ fetchBanner()
 const indexBanner = computed(() => store.state.banner.indexBanner)
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .container {
   .nav {
     display: flex;
