@@ -62,7 +62,7 @@ onLoad(() => {
     font-family: PingFang SC;
     font-weight: bold;
     padding-left: 20rpx;
-    padding-top: 20rpx;
+    padding-top: 30rpx;
     padding-bottom: 20rpx;
     letter-spacing: 4rpx;
   }
