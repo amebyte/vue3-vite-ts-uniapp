@@ -17,6 +17,7 @@
         </view>
       </block>
     </view>
+    <view class="more">查看更多活动</view>
   </view>
 </template>
 <script setup lang="ts">
@@ -121,6 +122,17 @@ onLoad(() => {
         }
       }
     }
+  }
+  .more {
+    font-size: 32rpx;
+    font-family: PingFang SC;
+    font-weight: bold;
+    text-decoration: underline;
+    color: #70c8c0;
+    text-align: center;
+    padding-top: 20rpx;
+    padding-bottom: 40rpx;
+    letter-spacing: 4rpx;
   }
 }
 </style>

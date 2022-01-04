@@ -35,6 +35,9 @@
       <!--活动预约 start-->
       <EventReservation />
       <!--活动预约 end-->
+      <!--专家答疑 start-->
+      <QuestionsAndAnswers />
+      <!--专家答疑 end-->
     </view>
   </view>
 </template>
@@ -53,6 +56,7 @@ import MenusComp from './components/MenusComp.vue'
 import MenusTwo from './components/MenusTwo.vue'
 import RecommendGoods from './components/RecommendGoods.vue'
 import EventReservation from './components/EventReservation.vue'
+import QuestionsAndAnswers from './components/QuestionsAndAnswers.vue'
 import { IMAGE_URL, APP_NAME } from '@/config/app'
 export default defineComponent({
   name: 'IndexPage',
@@ -64,6 +68,7 @@ export default defineComponent({
     MenusTwo,
     RecommendGoods,
     EventReservation,
+    QuestionsAndAnswers,
   },
   onPageScroll() {
     // console.log('onPageScroll')
