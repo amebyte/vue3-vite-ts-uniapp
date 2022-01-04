@@ -189,7 +189,7 @@ export default defineComponent({
     font-size: 32rpx;
 
     &.bg {
-      background: #3ba5f8;
+      background-color: $top-background-color;
     }
 
     .city {
