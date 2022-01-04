@@ -29,6 +29,9 @@
         <menus-comp :menus-config="state.quickMenu"></menus-comp>
       </view>
       <view style="padding: 0 20rpx 20rpx 20rpx"><MenusTwo /></view>
+      <!--精选课程 start-->
+      <RecommendGoods />
+      <!--精选课程 end-->
     </view>
   </view>
 </template>
@@ -45,6 +48,7 @@ import HeaderSearch from './components/HeaderSearch.vue'
 import MessageComp from './components/MessageComp.vue'
 import MenusComp from './components/MenusComp.vue'
 import MenusTwo from './components/MenusTwo.vue'
+import RecommendGoods from './components/RecommendGoods.vue'
 import { IMAGE_URL, APP_NAME } from '@/config/app'
 export default defineComponent({
   name: 'IndexPage',
@@ -54,6 +58,7 @@ export default defineComponent({
     MessageComp,
     MenusComp,
     MenusTwo,
+    RecommendGoods,
   },
   onPageScroll() {
     // console.log('onPageScroll')
