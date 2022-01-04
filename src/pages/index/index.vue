@@ -118,7 +118,6 @@ export default defineComponent({
     }
 
     const store = useStore()
-    // console.log('store', store)
 
     const fetchBanner = mapActions(['banner', BannerActionTypes.ACTION_GET_BANNER]).ACTION_GET_BANNER.bind({
       $store: store,
@@ -126,8 +125,7 @@ export default defineComponent({
     fetchBanner()
 
     const indexBanner = computed(() => store.state.banner.indexBanner)
-    // const quickMenu = computed(() => state.quickMenu)
-    // console.log('bannerState', indexBanner.value, quickMenu.value)
+
     const setToken = () => {
       store.dispatch(AppActionTypes.ACTION_LOGIN, 'token')
       title.value = store.state.app.token
