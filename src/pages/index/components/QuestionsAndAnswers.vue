@@ -65,7 +65,7 @@
     .item {
       padding-top: 60rpx;
       padding-bottom: 60rpx;
-      border-bottom: 3rpx solid #009688;
+      border-bottom: 3rpx solid #abf5ee;
       .question-box {
         display: flex;
         padding-bottom: 20rpx;
