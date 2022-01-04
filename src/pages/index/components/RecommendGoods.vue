@@ -115,10 +115,11 @@ export default defineComponent({
 }
 .new-user-goods-wrapper .title .text .name {
   color: $theme-font-color;
-  font-size: 30rpx;
+  font-size: 37rpx;
   font-weight: bold;
   margin-bottom: 5rpx;
   position: relative;
+  letter-spacing: 4rpx;
 }
 .line1 {
   overflow: hidden;

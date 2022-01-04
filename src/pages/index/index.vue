@@ -32,6 +32,9 @@
       <!--精选课程 start-->
       <RecommendGoods />
       <!--精选课程 end-->
+      <!--活动预约 start-->
+      <EventReservation />
+      <!--活动预约 end-->
     </view>
   </view>
 </template>
@@ -49,6 +52,7 @@ import MessageComp from './components/MessageComp.vue'
 import MenusComp from './components/MenusComp.vue'
 import MenusTwo from './components/MenusTwo.vue'
 import RecommendGoods from './components/RecommendGoods.vue'
+import EventReservation from './components/EventReservation.vue'
 import { IMAGE_URL, APP_NAME } from '@/config/app'
 export default defineComponent({
   name: 'IndexPage',
@@ -59,6 +63,7 @@ export default defineComponent({
     MenusComp,
     MenusTwo,
     RecommendGoods,
+    EventReservation,
   },
   onPageScroll() {
     // console.log('onPageScroll')
