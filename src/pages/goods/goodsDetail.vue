@@ -6,6 +6,9 @@
     <!--商品信息 start-->
     <goodsInfo :goods-info="goodsInfo" @openShare="openShare" />
     <!--商品信息 end-->
+    <!--底部导航栏 start-->
+    <DetailFooterBar />
+    <!--底部导航栏 end-->
   </view>
 </template>
 <script lang="ts">
@@ -13,12 +16,14 @@ import { onPageScroll, onLoad, onShow, onHide, onReachBottom } from '@dcloudio/u
 import { ref, getCurrentInstance, reactive, toRef, computed, defineComponent, toRefs } from 'vue'
 import ProductDetailSwiper from '@/components/product-detail-swiper/index.vue'
 import GoodsInfo from './components/GoodsInfo.vue'
+import DetailFooterBar from './components/DetailFooterBar.vue'
 import { fetchGoodsDetail } from '@/api/goods'
 export default defineComponent({
   name: 'GoodsDetail',
   components: {
     ProductDetailSwiper,
     GoodsInfo,
+    DetailFooterBar,
   },
   setup() {
     let state = reactive({
