@@ -19,6 +19,8 @@ export const detail = {
     deliveryMode: 0,
     deliveryTemplateId: 0,
     propJson: '[]',
+    price: 230.56,
+    marketPrice: 320.63,
     orderNum: 0,
     virtualSales: 0,
     hot: false,

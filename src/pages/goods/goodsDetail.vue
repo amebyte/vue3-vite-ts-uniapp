@@ -3,17 +3,22 @@
     <!--轮播图 start-->
     <ProductDetailSwiper :img-urls="sliderImage" :videoline="goodsInfo.videoLink" />
     <!--轮播图 end-->
+    <!--商品信息 start-->
+    <goodsInfo :goods-info="goodsInfo" @openShare="openShare" />
+    <!--商品信息 end-->
   </view>
 </template>
 <script lang="ts">
 import { onPageScroll, onLoad, onShow, onHide, onReachBottom } from '@dcloudio/uni-app'
 import { ref, getCurrentInstance, reactive, toRef, computed, defineComponent, toRefs } from 'vue'
 import ProductDetailSwiper from '@/components/product-detail-swiper/index.vue'
+import GoodsInfo from './components/GoodsInfo.vue'
 import { fetchGoodsDetail } from '@/api/goods'
 export default defineComponent({
   name: 'GoodsDetail',
   components: {
     ProductDetailSwiper,
+    GoodsInfo,
   },
   setup() {
     let state = reactive({
@@ -29,11 +34,16 @@ export default defineComponent({
         })
         .catch((err) => console.log('err', err))
     }
+
+    const openShare = () => {
+      console.log('openShare')
+    }
     onShow(() => {
       getGoodsDetail()
     })
     return {
       ...toRefs(state),
+      openShare,
     }
   },
 })
