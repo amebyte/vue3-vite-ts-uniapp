@@ -4111,6 +4111,11 @@ module-alias@^2.2.2:
   resolved "https://registry.npm.taobao.org/module-alias/download/module-alias-2.2.2.tgz"
   integrity sha1-FRzc7MJOJXOf8KpuUeHFcWl0wOA=
 
+mp-html@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.npmmirror.com/mp-html/download/mp-html-2.2.1.tgz#c1d3337445a3c220e94bed3950b9df1a0ac32d26"
+  integrity sha512-uBnC7yBz0/N411XMWK7CKF7mAAj0Nh40KrEMVzKZgrk+ZUCJRJZZUI2HeTHJur5os9jQTCq2X8w9UrYcUF7MNA==
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.npmmirror.com/ms/download/ms-2.0.0.tgz"
