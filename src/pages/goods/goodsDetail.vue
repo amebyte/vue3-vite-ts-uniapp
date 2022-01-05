@@ -6,6 +6,9 @@
     <!--商品信息 start-->
     <goodsInfo :goods-info="goodsInfo" @openShare="openShare" />
     <!--商品信息 end-->
+    <!--课程信息 start-->
+    <GoodsCurriculum />
+    <!--课程信息 end-->
     <!--商品详情 start-->
     <GoodsContent :goods-info="goodsInfo" />
     <!--商品详情 end-->
@@ -21,6 +24,7 @@ import ProductDetailSwiper from '@/components/product-detail-swiper/index.vue'
 import GoodsInfo from './components/GoodsInfo.vue'
 import GoodsContent from './components/GoodsContent.vue'
 import DetailFooterBar from './components/DetailFooterBar.vue'
+import GoodsCurriculum from './components/GoodsCurriculum.vue'
 import { fetchGoodsDetail } from '@/api/goods'
 export default defineComponent({
   name: 'GoodsDetail',
@@ -29,6 +33,7 @@ export default defineComponent({
     GoodsInfo,
     GoodsContent,
     DetailFooterBar,
+    GoodsCurriculum,
   },
   setup() {
     let state = reactive({
