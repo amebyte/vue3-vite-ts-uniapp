@@ -64,6 +64,14 @@ export default defineComponent({
 })
 </script>
 <style lang="scss" scoped>
+@import '@/static/css/variable.scss';
 .container {
+  background-color: $background-color;
+}
+</style>
+<style lang="scss">
+@import '@/static/css/variable.scss';
+page {
+  background-color: $background-color;
 }
 </style>

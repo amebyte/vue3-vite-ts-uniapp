@@ -1,5 +1,11 @@
 <template>
   <view class="goods-info-wrap">
+    <view class="status-desc">
+      <view class="content">
+        <view class="l">已报名 <text>3</text> 人 剩余 <text>12</text> 个名额</view>
+        <view class="r">线下课程</view>
+      </view>
+    </view>
     <view class="acea-row row-between row-bottom">
       <view class="good-price">
         <view class="price">
@@ -51,7 +57,40 @@ const openShare = () => {
 @import '@/static/css/variable.scss';
 .goods-info-wrap {
   background-color: #fff;
-
+  position: relative;
+  .status-desc {
+    position: absolute;
+    top: -80rpx;
+    left: 0;
+    width: 100%;
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+    .content {
+      height: 80rpx;
+      background: linear-gradient(0deg, #f28e26 0%, #fd644f 100%);
+      box-shadow: 0px 0px 5rpx 1rpx rgba(25, 119, 110, 0.35);
+      border-radius: 20rpx 20rpx 0px 0px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 24rpx;
+      padding-left: 20rpx;
+      padding-right: 20rpx;
+      > .l {
+        color: #fff;
+        text {
+          padding-left: 10rpx;
+          padding-right: 10rpx;
+        }
+      }
+      > .r {
+        border: 2rpx solid #fff;
+        border-radius: 7rpx;
+        color: #fff;
+        padding: 8rpx 20rpx;
+      }
+    }
+  }
   .good-price {
     display: flex;
     flex-direction: row;
