@@ -43,6 +43,8 @@ const props = defineProps({
     background: #fff;
     min-height: 400rpx;
     margin-bottom: 140rpx;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
     .richImg {
       max-width: 100%;
     }

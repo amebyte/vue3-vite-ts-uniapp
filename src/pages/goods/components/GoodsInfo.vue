@@ -48,6 +48,7 @@ const openShare = () => {
 }
 </script>
 <style scoped lang="scss">
+@import '@/static/css/variable.scss';
 .goods-info-wrap {
   background-color: #fff;
 
@@ -57,37 +58,17 @@ const openShare = () => {
     align-items: flex-end;
     justify-content: flex-start;
     padding: 30rpx 0 0 20rpx;
-
-    .integral {
-      .num {
-        font-size: 64rpx;
-        color: #e60012;
-        line-height: 44rpx;
-      }
-      .desc {
-        font-size: 28rpx;
-        line-height: 28rpx;
-        color: #e60012;
-        padding-right: 8rpx;
-      }
-    }
-
-    .plus {
-      padding-left: 10rpx;
-      padding-right: 15rpx;
-    }
-
     .price {
       .rmb {
         font-size: 28rpx;
         line-height: 28rpx;
-        color: #e60012;
+        color: $theme-font-color;
         padding-right: 8rpx;
       }
 
       .num {
         font-size: 64rpx;
-        color: #e60012;
+        color: $theme-font-color;
         line-height: 44rpx;
       }
     }
@@ -125,7 +106,7 @@ const openShare = () => {
     padding-right: 20rpx;
     .iconfont {
       font-size: 50rpx;
-      color: #868383;
+      color: #6ebcb5;
     }
   }
 
@@ -133,7 +114,7 @@ const openShare = () => {
     display: inline-block;
     padding: 16rpx 0 20rpx 30rpx;
     font-size: 24rpx;
-    color: #999999;
+    color: #6ebcb5;
     text-decoration: line-through;
   }
 
@@ -148,7 +129,7 @@ const openShare = () => {
 
     .txt {
       font-size: 28rpx;
-      color: #010101;
+      color: $theme-font-color;
       font-weight: bold;
       display: -webkit-box;
       -webkit-box-orient: vertical;
@@ -166,9 +147,9 @@ const openShare = () => {
     .txt {
       width: 100%;
       padding: 8rpx;
-      background: #f2f2f2;
+      background-color: #ebfffd;
       font-size: 12px;
-      color: #999;
+      color: #00796b;
       border-radius: 5rpx;
     }
   }
