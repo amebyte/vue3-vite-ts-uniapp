@@ -5,8 +5,8 @@
       <text class="txt">首页</text>
     </view>
     <view class="item" @click="toggleFavourite">
-      <text v-if="!isFavorite" class="iconfont icon-favorite-filling"></text>
-      <text v-else class="iconfont icon-favorite-filling active"></text>
+      <text v-if="!isFavorite" class="iconfont icon-favorite"></text>
+      <text v-else class="iconfont icon-favorite-filling"></text>
       <text class="txt">收藏</text>
     </view>
     <navigator open-type="switchTab" class="item shopping-cart" url="/pages/shopping-cart/index" hover-class="none">
@@ -15,11 +15,9 @@
       </text>
       <text class="txt">购物车</text>
     </navigator>
-    <view class="item btn add-cart" @click="joinCart">
-      <text class="txt">加入购物车</text>
-    </view>
-    <view class="item btn buy-now" style="flex: 4.5" @click="buyNowAction">
-      <text class="txt" style="width: 80%; margin-right: 20rpx">立即抢购</text>
+    <view class="item btn">
+      <text class="txt add-cart" @click="joinCart">加入购物车</text>
+      <text class="txt buy-now" @click="buyNowAction">立即抢购</text>
     </view>
   </view>
 </template>
@@ -57,7 +55,8 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+@import '@/static/css/variable.scss';
 .footer-bar {
   display: flex;
   flex-direction: row;
@@ -65,7 +64,7 @@ export default defineComponent({
   bottom: 0;
   width: 100%;
   background-color: #fff;
-
+  border-top: 2rpx solid #effafa;
   .item {
     display: flex;
     flex-direction: column;
@@ -76,18 +75,12 @@ export default defineComponent({
 
     .iconfont {
       font-size: 36rpx;
-
-      &.active {
-        color: #e60012 !important;
-      }
+      color: $theme-font-color;
     }
 
     .txt {
       font-size: 20rpx;
-    }
-
-    &.shop {
-      color: #e60012;
+      color: $theme-font-color;
     }
 
     &.shopping-cart {
@@ -109,28 +102,27 @@ export default defineComponent({
     }
 
     &.btn {
-      flex: 2.5;
-      color: #fff;
-
+      flex: 6;
+      display: flex;
+      flex-direction: row;
       .txt {
-        width: 208rpx;
-        height: 76rpx;
-        line-height: 76rpx;
+        width: 200rpx;
+        height: 66rpx;
+        line-height: 66rpx;
         text-align: center;
-        border-radius: 40rpx;
         font-size: 28rpx;
-      }
-    }
+        color: #fff;
+        &.add-cart {
+          border-bottom-left-radius: 40rpx;
+          border-top-left-radius: 40rpx;
+          background-color: #1aa86c;
+        }
 
-    &.add-cart {
-      .txt {
-        background-color: #e60012;
-      }
-    }
-
-    &.buy-now {
-      .txt {
-        background-color: #ffb52e;
+        &.buy-now {
+          border-top-right-radius: 40rpx;
+          border-bottom-right-radius: 40rpx;
+          background-color: #009688;
+        }
       }
     }
   }

@@ -20,7 +20,7 @@ const props = defineProps({
   },
 })
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .content-wrap {
   background-color: #fff;
   box-shadow: 0px 0px 14rpx 6rpx rgba(29, 233, 182, 0.11);
@@ -32,6 +32,9 @@ const props = defineProps({
       font-family: PingFang SC;
       font-weight: bold;
       color: #00796b;
+      letter-spacing: 4rpx;
+      padding-left: 20rpx;
+      padding-top: 30rpx;
     }
   }
   .good-detail-content {
@@ -39,7 +42,8 @@ const props = defineProps({
     flex-direction: column;
     background: #fff;
     min-height: 400rpx;
-    img {
+    margin-bottom: 140rpx;
+    .richImg {
       max-width: 100%;
     }
   }
