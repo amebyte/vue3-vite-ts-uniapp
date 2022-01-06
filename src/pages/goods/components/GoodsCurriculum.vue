@@ -28,7 +28,7 @@
       justify-content: flex-start;
       font-size: 24rpx;
       padding: 20rpx;
-      border-bottom: 2rpx solid #e0e0e0;
+      border-bottom: 2rpx solid #f5f3f3;
       .label {
         flex: 1;
         color: #5aefc9;

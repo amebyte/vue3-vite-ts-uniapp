@@ -55,7 +55,7 @@
         display: flex;
         justify-content: flex-start;
         padding: 30rpx 20rpx;
-        border-bottom: 2rpx solid #e0e0e0;
+        border-bottom: 2rpx solid #f5f3f3;
         > .l {
           image {
             width: 100rpx;

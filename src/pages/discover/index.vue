@@ -43,7 +43,7 @@
     <!--banner-nav end-->
     <!--答疑列表 start-->
     <view class="list">
-      <view class="item">
+      <view v-for="item in 3" :key="item" class="item">
         <view class="recommend"><text>精选</text></view>
         <view class="user-info">
           <view class="profile">
@@ -89,6 +89,20 @@
               src="http://tstatic.mevikycloud.cn/image/product/2021/07/29/12051e1933364cd68168020f923e1a9fsjokznvbvn.jpg"
               mode="scaleToFill"
             ></image>
+          </view>
+        </view>
+        <view class="interact-status">
+          <view class="status">
+            <text class="iconfont icon-search"></text>
+            <text class="txt">6544</text>
+          </view>
+          <view class="status">
+            <text class="iconfont icon-search"></text>
+            <text class="txt">65</text>
+          </view>
+          <view class="status">
+            <text class="iconfont icon-search"></text>
+            <text class="txt">不感兴趣</text>
           </view>
         </view>
       </view>
@@ -175,6 +189,7 @@ import { ref } from 'vue'
       padding: 20rpx;
       box-shadow: 0px 0px 14rpx 6rpx rgba(29, 233, 182, 0.11);
       border-radius: 20rpx;
+      margin-bottom: 20rpx;
       .recommend {
         text {
           background-color: #80c269;
@@ -257,6 +272,27 @@ import { ref } from 'vue'
             width: 100%;
             height: 100%;
             border-radius: 7rpx;
+          }
+        }
+      }
+      .interact-status {
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 20rpx;
+        margin-bottom: 20rpx;
+        padding-left: 20rpx;
+        > .status {
+          margin-right: 40rpx;
+          .iconfont {
+            font-size: 50rpx;
+            color: #a6a6a6;
+          }
+          .txt {
+            font-size: 21rpx;
+            font-family: Hiragino Sans GB;
+            font-weight: bold;
+            color: #a6a6a6;
+            padding-left: 10rpx;
           }
         }
       }
