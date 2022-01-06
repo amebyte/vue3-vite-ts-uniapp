@@ -16,14 +16,28 @@
     <GoodsContent :goods-info="goodsInfo" />
     <!--商品详情 end-->
     <!--底部导航栏 start-->
-    <DetailFooterBar />
+    <DetailFooterBar ref="detailFooterBar" />
     <!--底部导航栏 end-->
+    <!--规格属性 start-->
+    <AttrWindow
+      id="attr-window"
+      :attr="attr"
+      :i-splus="1"
+      :i-scart="1"
+      @closeWindow="closeWindow"
+      @changeCartNum="changeCartNum"
+      @selectAttrVal="selectAttrVal"
+      @iptCartNum="iptCartNum"
+      @confirm="confirm"
+    />
+    <!--规格属性 end-->
   </view>
 </template>
 <script lang="ts">
 import { onPageScroll, onLoad, onShow, onHide, onReachBottom } from '@dcloudio/uni-app'
 import { ref, getCurrentInstance, reactive, toRef, computed, defineComponent, toRefs } from 'vue'
 import ProductDetailSwiper from '@/components/product-detail-swiper/index.vue'
+import AttrWindow from '@/components/attr-window/index.vue'
 import GoodsInfo from './components/GoodsInfo.vue'
 import GoodsContent from './components/GoodsContent.vue'
 import DetailFooterBar from './components/DetailFooterBar.vue'
@@ -34,6 +48,7 @@ export default defineComponent({
   name: 'GoodsDetail',
   components: {
     ProductDetailSwiper,
+    AttrWindow,
     GoodsInfo,
     GoodsContent,
     DetailFooterBar,
@@ -44,6 +59,15 @@ export default defineComponent({
     let state = reactive({
       goodsInfo: {} as any,
       sliderImage: [],
+      attr: {
+        isOpenAttrWindow: false, // 是否打开属性面板
+        productAttr: [],
+        productSelect: {},
+      } as any,
+      isBuyNow: false,
+      cart_num: 0,
+      attrValue: '',
+      attrTxt: '请选择',
     })
     const getGoodsDetail = () => {
       fetchGoodsDetail({})
@@ -51,6 +75,7 @@ export default defineComponent({
           console.log('r', r)
           state.goodsInfo = r.data.data
           state.sliderImage = state.goodsInfo.sliderImage
+          state.attr = state.goodsInfo.attr
           state.goodsInfo.content = state.goodsInfo.content.replace(
             /<img/gi,
             "<img class='richImg' style='width:auto!important;height:auto!important;max-height:100%;width:100%;'"
@@ -58,6 +83,108 @@ export default defineComponent({
           state.goodsInfo.content = state.goodsInfo.content.replace(/&nbsp;/g, '&ensp;')
         })
         .catch((err) => console.log('err', err))
+    }
+
+    /**
+     * 设置是否打开属性面板
+     */
+    const setIsOpenAttrWindow = (flag) => {
+      state.attr.isOpenAttrWindow = flag
+    }
+
+    /**
+     * 设置是否立即购买
+     */
+    const setIsBuyNow = (flag) => {
+      state.isBuyNow = flag
+    }
+
+    /**
+     * 关闭属性面板回调事件
+     *
+     */
+    const closeWindow = () => {
+      setIsBuyNow(false)
+      setIsOpenAttrWindow(false)
+    }
+
+    /**
+     * 属性选中确认回调
+     */
+    const confirm = () => {
+      const { proxy } = getCurrentInstance() as any
+      const { buyNow, addCart, groupBuyingNow } = proxy.$refs.detailFooterBar
+      setIsOpenAttrWindow(false)
+      state.isBuyNow ? buyNow() : addCart()
+      setIsBuyNow(false)
+    }
+
+    /**
+     * 购物车数量加和数量减
+     *
+     */
+    const changeCartNum = (changeValue) => {
+      // changeValue:是否 加|减
+      let stock = state.attr.productSelect.stock || 0
+      let num = state.attr.productSelect
+      if (changeValue) {
+        num.cart_num++
+        if (num.cart_num > stock) {
+          state.attr.productSelect.cart_num = stock
+          state.cart_num = stock
+        }
+      } else {
+        num.cart_num--
+        if (num.cart_num < 1) {
+          state.attr.productSelect.cart_num = 1
+          state.cart_num = 1
+        }
+      }
+    }
+
+    /**
+     * 选中的SKU属性之后的操作
+     *
+     */
+    const selectAttrVal = (attrval, attrid) => {
+      setAttrVal(attrval, attrid)
+      // const goods = this.commonCartParam(false)
+      const goods = {} as any
+      if (goods) {
+        state.attr.productSelect.image = goods.productSkuVO.pic
+        state.attr.productSelect.image = goods.productSkuVO.price
+        state.attr.productSelect.stock = goods.productSkuVO.actualStocks
+      }
+    }
+
+    /**
+     * 设置选中的SKU属性
+     *
+     */
+    const setAttrVal = (attrval, attrid) => {
+      state.attr.productAttr = state.attr.productAttr.map((o) => {
+        o.attrValues.map((v) => {
+          if (attrval.val === v.val || attrval === v.val) {
+            if (v.isSelect) {
+              v.isSelect = false
+            } else {
+              v.isSelect = true
+            }
+          } else if (o.attrId === attrid) {
+            v.isSelect = false
+          }
+          return v
+        })
+        return o
+      })
+    }
+
+    /**
+     * 购物车手动填写
+     *
+     */
+    const iptCartNum = (e) => {
+      state.attr.productSelect.cart_num = e || 1
     }
 
     const openShare = () => {
@@ -68,6 +195,11 @@ export default defineComponent({
     })
     return {
       ...toRefs(state),
+      iptCartNum,
+      changeCartNum,
+      selectAttrVal,
+      closeWindow,
+      confirm,
       openShare,
     }
   },
