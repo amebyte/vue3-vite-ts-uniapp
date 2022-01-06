@@ -16,7 +16,7 @@
     <GoodsContent :goods-info="goodsInfo" />
     <!--商品详情 end-->
     <!--底部导航栏 start-->
-    <DetailFooterBar ref="detailFooterBar" />
+    <DetailFooterBar ref="detailFooterBar" @setIsOpenAttrWindow="setIsOpenAttrWindow" />
     <!--底部导航栏 end-->
     <!--规格属性 start-->
     <AttrWindow
@@ -60,7 +60,7 @@ export default defineComponent({
       goodsInfo: {} as any,
       sliderImage: [],
       attr: {
-        isOpenAttrWindow: false, // 是否打开属性面板
+        isOpenAttrWindow: true, // 是否打开属性面板
         productAttr: [],
         productSelect: {},
       } as any,
@@ -75,14 +75,37 @@ export default defineComponent({
           console.log('r', r)
           state.goodsInfo = r.data.data
           state.sliderImage = state.goodsInfo.sliderImage
-          state.attr = state.goodsInfo.attr
+          state.attr.productAttr = state.goodsInfo.productAttr
           state.goodsInfo.content = state.goodsInfo.content.replace(
             /<img/gi,
             "<img class='richImg' style='width:auto!important;height:auto!important;max-height:100%;width:100%;'"
           )
           state.goodsInfo.content = state.goodsInfo.content.replace(/&nbsp;/g, '&ensp;')
+          setDefaultAttrSelect(state.goodsInfo.minHeap)
         })
         .catch((err) => console.log('err', err))
+    }
+
+    /**
+     * 设置默认选中属性
+     * @param {Object} data
+     */
+    const setDefaultAttrSelect = (data) => {
+      state.attr.productSelect.storeName = state.goodsInfo.prodName
+      state.attr.productSelect.image = data.pic
+      state.attr.productSelect.price = data.price
+      state.attr.productSelect.actualStocks = data.actualStocks
+      state.attr.productSelect.limits = data.limits
+      state.attr.productSelect.cart_num = 1
+      state.attrValue = ''
+      state.attrTxt = '已选择'
+
+      if (data.properties) {
+        const properties = JSON.parse(data.properties)
+        Object.keys(properties).forEach((v) => {
+          setAttrVal(properties[v], v)
+        })
+      }
     }
 
     /**
@@ -195,6 +218,7 @@ export default defineComponent({
     })
     return {
       ...toRefs(state),
+      setIsOpenAttrWindow,
       iptCartNum,
       changeCartNum,
       selectAttrVal,

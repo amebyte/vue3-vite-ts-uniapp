@@ -28,20 +28,42 @@ import { ref, getCurrentInstance, reactive, toRef, computed, defineComponent, to
 
 export default defineComponent({
   name: 'DetailFooterBar',
-  setup() {
+  emits: ['setIsOpenAttrWindow'],
+  setup(props, { emit }) {
     let cartCount = ref(0)
     let isFavorite = ref(false)
+    /**
+     * 打开属性窗口
+     *
+     */
+    const openAttrWindow = () => {
+      emit('setIsOpenAttrWindow', true)
+    }
+    /**
+     * 跳转首页
+     */
     const gotoHandler = () => {
       console.log('gotoHandler')
     }
+    /**
+     * toggle收藏
+     */
     const toggleFavourite = () => {
       console.log('toggleFavourite')
     }
+    /**
+     * 打开属性加入购物车
+     *
+     */
     const joinCart = () => {
-      console.log('joinCart')
+      openAttrWindow()
     }
+    /**
+     * 立即购买 || 立即抢购
+     *
+     */
     const buyNowAction = () => {
-      console.log('buyNowAction')
+      openAttrWindow()
     }
     return {
       cartCount,

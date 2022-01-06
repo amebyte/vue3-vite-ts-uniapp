@@ -166,6 +166,7 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+@import '@/static/css/variable.scss';
 .product-window {
   position: fixed;
   bottom: 0;
@@ -268,9 +269,9 @@ export default defineComponent({
 }
 
 .product-window .productWinList .item .listn .itemn.on {
-  color: $theme-color;
+  color: $theme-font-color;
   background: rgba(255, 244, 243, 1);
-  border-color: $theme-color;
+  border-color: $theme-font-color;
 }
 
 .product-window .productWinList .item .listn .itemn.limit {
