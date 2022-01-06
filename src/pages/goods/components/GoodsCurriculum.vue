@@ -8,7 +8,7 @@
       <view class="item">
         <view class="label"> 开课地点： </view>
         <view class="info">
-          <text>佛山市三水区知行天下青少年综合实践教育营</text>
+          <text class="txt">佛山市三水区知行天下青少年综合实践教育营</text>
           <text class="nav-action">导航</text>
         </view>
       </view>
@@ -40,6 +40,9 @@
         justify-content: space-between;
         font-family: PingFang SC;
         font-weight: 600;
+        .txt {
+          padding-right: 10rpx;
+        }
         .nav-action {
           background: #009688;
           border-radius: 7rpx;
