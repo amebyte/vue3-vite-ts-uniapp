@@ -36,6 +36,14 @@
         </view>
       </block>
     </view>
+    <!--头像和用户信息 end-->
+    <!--会员中心入口 start-->
+    <view class="member-center">
+      <view class="image"><image src="../../static/images/skip/vip.png" /></view>
+      <view class="desc">只有会员才知道的世界</view>
+      <view class="action"><text>进入</text></view>
+    </view>
+    <!--会员中心入口 end-->
   </view>
 </template>
 
@@ -55,8 +63,13 @@ const goLogin = () => {
   console.log('goLogin')
 }
 </script>
-
 <style lang="scss">
+@import '@/static/css/variable.scss';
+page {
+  background-color: $background-color;
+}
+</style>
+<style lang="scss" scoped>
 @import '@/static/css/variable.scss';
 .container {
   .header {
@@ -92,6 +105,7 @@ const goLogin = () => {
     padding: 22rpx;
     height: 246rpx;
     overflow: hidden;
+    padding-top: 30rpx;
 
     .user-avatar {
       image {
@@ -164,6 +178,46 @@ const goLogin = () => {
       .user-right-bottom {
         color: #fff;
         opacity: 0.7;
+      }
+    }
+  }
+  .member-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20rpx;
+    margin-right: 20rpx;
+
+    background: #00342e;
+    border: 3px solid #ffffff;
+    box-shadow: 0px 0px 14rpx 6rpx rgba(29, 233, 182, 0.11);
+    border-radius: 20rpx;
+    padding: 20rpx;
+    height: 120rpx;
+    .image {
+      position: relative;
+      image {
+        position: absolute;
+        top: -65rpx;
+        width: 103rpx;
+        height: 93rpx;
+      }
+    }
+    .desc {
+      font-size: 28rpx;
+      font-family: PingFang SC;
+      font-weight: 400;
+      color: #fcb81d;
+    }
+    .action {
+      text {
+        font-size: 28rpx;
+        font-family: PingFang SC;
+        font-weight: bold;
+        color: #00342e;
+        background-color: #fcb81d;
+        border-radius: 27rpx;
+        padding: 10rpx 30rpx;
       }
     }
   }
