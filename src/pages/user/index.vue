@@ -23,6 +23,7 @@
             <view v-else @click="toPage('/pages/my/setMobile')">设置手机号码</view>
           </view>
         </view>
+        <view class="setup"><text class="iconfont icon-setting"></text></view>
       </block>
       <block v-else>
         <view class="user-avatar" @click="goLogin">
@@ -146,6 +147,15 @@
       </view>
     </view>
     <!-- 我的设置 end-->
+    <!--客服 start-->
+    <view class="service">
+      <view class="btn">
+        <text class="iconfont icon-wechat"></text>
+        <text>联系客服</text>
+      </view>
+      <view class="desc">在线答疑时间：工作日8:00-20:00</view>
+    </view>
+    <!--客服 end-->
   </view>
 </template>
 
@@ -283,6 +293,15 @@ page {
         opacity: 0.7;
       }
     }
+    .setup {
+      position: absolute;
+      top: 70rpx;
+      right: 40rpx;
+      color: #fff;
+      .iconfont {
+        font-size: 40rpx;
+      }
+    }
   }
   .member-center {
     display: flex;
@@ -385,6 +404,42 @@ page {
           right: 80rpx;
         }
       }
+    }
+  }
+
+  .service {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50rpx;
+    margin-bottom: 40rpx;
+    .btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 253rpx;
+      height: 93rpx;
+      background: linear-gradient(0deg, #2fb383 0%, #18a86b 100%);
+      box-shadow: 0px 0px 14rpx 6rpx rgba(29, 233, 182, 0.11);
+      border-radius: 47rpx;
+
+      font-size: 28rpx;
+      font-family: PingFang SC;
+      font-weight: bold;
+      color: #ffffff;
+      line-height: 48rpx;
+      .iconfont {
+        padding-right: 20rpx;
+      }
+    }
+    .desc {
+      font-size: 20rpx;
+      font-family: PingFang SC;
+      font-weight: bold;
+      color: #b5b5b5;
+      line-height: 48rpx;
+      padding-top: 20rpx;
     }
   }
 }
