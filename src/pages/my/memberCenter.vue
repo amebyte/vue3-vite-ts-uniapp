@@ -39,10 +39,14 @@
     <!--特惠标题 start-->
     <view class="preferential-title">会员专享特惠商品</view>
     <!--特惠标题 end-->
+    <!--特惠商品列表 start-->
+    <ProductListGrid />
+    <!--特惠商品列表 end-->
   </view>
 </template>
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
+import ProductListGrid from '@/components/product-list-grid/index.vue'
 let isLogin = ref(true)
 let userInfo = reactive({
   pic: 'https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJ8SiagBMUuLZ7USibVCmnJBvy87ib8gT8gl1wrCwwZRVDsv9a6t4lbGLHcoiacKDxjvgw0v374xE3UkQ/132',

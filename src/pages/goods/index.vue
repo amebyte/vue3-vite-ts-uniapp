@@ -13,13 +13,13 @@
     </view>
     <!--轮播图 end-->
     <view v-show="currNavId === 1">
-      <ListStyle1 />
+      <GoodsListColumnStyle />
     </view>
     <view v-show="currNavId === 2">
-      <ListStyle2 />
+      <ProductListGrid />
     </view>
     <view v-show="currNavId === 3">
-      <ListStyle2 />
+      <ProductListGrid />
     </view>
   </view>
 </template>
@@ -29,8 +29,8 @@ import { ref, computed } from 'vue'
 import { useStore, mapActions } from 'vuex'
 import { BannerActionTypes } from '@/store/modules/banner/action-types'
 import AdSwiper from '@/components/ad-swiper/index.vue'
-import ListStyle1 from './components/ListStyle1.vue'
-import ListStyle2 from './components/ListStyle2.vue'
+import ProductListGrid from '@/components/product-list-grid/index.vue'
+import GoodsListColumnStyle from './components/GoodsListColumnStyle.vue'
 const navList = ref([
   { name: '精品课程', id: 1 },
   { name: '水培商品', id: 2 },
@@ -58,6 +58,7 @@ const indexBanner = computed(() => store.state.banner.indexBanner)
     margin-right: 80rpx;
     margin-top: 40rpx;
     margin-bottom: 30rpx;
+
     .tab-name {
       font-size: 28rpx;
       font-family: PingFang SC;
