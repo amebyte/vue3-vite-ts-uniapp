@@ -60,10 +60,10 @@
     }
   ],
   "globalStyle": {
-    "navigationBarTextStyle": "black",
+    "navigationBarTextStyle": "white",
     "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "navigationBarBackgroundColor": "#1aa86c",
+    "backgroundColor": "#1aa86c"
   },
   "tabBar": {
     "color": "#1AA86C",

@@ -1,53 +1,171 @@
 <template>
-  <view class="content">
-    <image class="logo" src="/static/logo.png" />
-    <view class="text-area">
-      <text class="title">{{ title }}</text>
-      <view @click="setToken">login</view>
+  <view class="container">
+    <view class="header">
+      <view class="content"></view>
+    </view>
+    <!--头像和用户信息 start-->
+    <view class="user-info-header" style="">
+      <block v-if="isLogin">
+        <view class="user-avatar" @click="toPage('/pages/my/edit')">
+          <image :src="userInfo.pic" />
+        </view>
+        <view class="user-right">
+          <view class="user-right-top">
+            <text class="username">{{ userInfo.nickName }}</text>
+            <view class="user-level"
+              >{{ userInfo.memberLevelVO ? userInfo.memberLevelVO : 'LV0' }}
+              <text class="iconfont icon-arrow-right-bold"></text
+            ></view>
+            <view class="user-person">个人认证</view>
+          </view>
+          <view class="user-right-bottom">
+            <view v-if="userInfo.userMobile">{{ userInfo.userMobile || '' }}</view>
+            <view v-else @click="toPage('/pages/my/setMobile')">设置手机号码</view>
+          </view>
+        </view>
+      </block>
+      <block v-else>
+        <view class="user-avatar" @click="goLogin">
+          <image src="../../static/images/meviky/un-sign-in-header.svg" />
+        </view>
+        <view class="user-right">
+          <view class="user-right-top" @click="goLogin">
+            <text class="username">授权登录</text>
+          </view>
+          <view class="user-right-bottom" @click="goLogin">授权登录之后享受更多优惠福利</view>
+        </view>
+      </block>
     </view>
   </view>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { AppActionTypes } from '@/store/modules/app/action-types'
-import { useStore } from 'vuex'
-const title = ref('会员中心')
-const store = useStore()
-const setToken = () => {
-  store.dispatch(AppActionTypes.ACTION_LOGIN, 'token')
-  title.value = store.state.app.token
+import { reactive, ref } from 'vue'
+let isLogin = ref(true)
+let userInfo = reactive({
+  pic: 'https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJ8SiagBMUuLZ7USibVCmnJBvy87ib8gT8gl1wrCwwZRVDsv9a6t4lbGLHcoiacKDxjvgw0v374xE3UkQ/132',
+  nickName: 'coboy',
+  memberLevelVO: 'Lv1',
+  userMobile: '1382550699x',
+})
+const toPage = (path) => {
+  console.log('toPage')
+}
+const goLogin = () => {
+  console.log('goLogin')
 }
 </script>
 
 <style lang="scss">
-$link-color: red;
-a {
-  color: $link-color;
-}
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+@import '@/static/css/variable.scss';
+.container {
+  .header {
+    position: absolute;
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
 
-.logo {
-  height: 200rpx;
-  width: 200rpx;
-  margin-top: 200rpx;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 50rpx;
-}
+    .content {
+      position: relative;
+      width: 100%;
+      height: 246rpx;
+      text-align: center;
+      line-height: 100rpx;
 
-.text-area {
-  display: flex;
-  justify-content: center;
-}
+      &::after {
+        width: 140%;
+        height: 246rpx;
+        position: absolute;
+        left: -20%;
+        top: 0;
+        z-index: -1;
+        content: '';
+        border-radius: 0 0 50% 50%;
+        background-color: $top-background-color;
+      }
+    }
+  }
 
-.title {
-  font-size: 36rpx;
-  color: #8f8f94;
+  .user-info-header {
+    position: relative;
+    display: flex;
+    padding: 22rpx;
+    height: 246rpx;
+    overflow: hidden;
+
+    .user-avatar {
+      image {
+        width: 120rpx;
+        height: 120rpx;
+        border-radius: 50%;
+      }
+    }
+
+    .user-top-icon {
+      position: absolute;
+      right: 0;
+      bottom: -87rpx;
+      width: 320rpx;
+    }
+
+    .user-right {
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      padding-left: 20rpx;
+      margin-top: 17rpx;
+
+      .user-right-top {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        height: 40rpx;
+        line-height: 40rpx;
+        margin-bottom: 10rpx;
+
+        .username {
+          font-size: 35rpx;
+          padding-right: 6rpx;
+          color: #fff;
+        }
+
+        .user-level {
+          height: 30rpx;
+          line-height: 30rpx;
+          font-size: 20rpx;
+          background-color: #e7e7e7;
+          border-radius: 10rpx;
+          padding-left: 10rpx;
+          padding-right: 10rpx;
+          margin-right: 6px;
+          color: #f33333;
+
+          .iconfont {
+            font-size: 15rpx;
+          }
+        }
+
+        .user-person {
+          height: 30rpx;
+          line-height: 30rpx;
+          font-size: 20rpx;
+          background-color: #ffcc00;
+          border-radius: 10rpx;
+          padding-left: 10rpx;
+          padding-right: 10rpx;
+          color: #f33333;
+
+          .iconfont {
+            font-size: 15rpx;
+          }
+        }
+      }
+
+      .user-right-bottom {
+        color: #fff;
+        opacity: 0.7;
+      }
+    }
+  }
 }
 </style>

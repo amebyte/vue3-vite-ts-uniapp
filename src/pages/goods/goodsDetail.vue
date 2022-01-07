@@ -175,7 +175,7 @@ export default defineComponent({
       const goods = {} as any
       if (goods) {
         state.attr.productSelect.image = goods.productSkuVO.pic
-        state.attr.productSelect.image = goods.productSkuVO.price
+        state.attr.productSelect.price = goods.productSkuVO.price
         state.attr.productSelect.stock = goods.productSkuVO.actualStocks
       }
     }
