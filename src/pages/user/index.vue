@@ -27,7 +27,7 @@
       </block>
       <block v-else>
         <view class="user-avatar" @click="goLogin">
-          <image src="../../static/images/meviky/un-sign-in-header.svg" />
+          <text class="iconfont icon-setting"></text>
         </view>
         <view class="user-right">
           <view class="user-right-top" @click="goLogin">
@@ -42,7 +42,7 @@
     <view class="member-center">
       <view class="image"><image src="../../static/images/skip/vip.png" /></view>
       <view class="desc">只有会员才知道的世界</view>
-      <view class="action"><text>进入</text></view>
+      <view class="action"><text @click="gotoMemberCenter">进入</text></view>
     </view>
     <!--会员中心入口 end-->
     <!-- 我的订单 start-->
@@ -174,6 +174,11 @@ const toPage = (path) => {
 }
 const goLogin = () => {
   console.log('goLogin')
+}
+const gotoMemberCenter = () => {
+  uni.navigateTo({
+    url: `/pages/my/memberCenter`,
+  })
 }
 </script>
 <style lang="scss">

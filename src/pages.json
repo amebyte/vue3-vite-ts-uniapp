@@ -57,6 +57,19 @@
           }
         }
       ]
+    },
+    {
+      "root": "pages/my",
+      "pages": [
+        {
+          "path": "memberCenter",
+          "style": {
+            "navigationBarTitleText": "会员中心",
+            "navigationBarBackgroundColor": "#102c24",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
     }
   ],
   "globalStyle": {
