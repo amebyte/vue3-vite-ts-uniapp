@@ -44,6 +44,108 @@
       <view class="action"><text>进入</text></view>
     </view>
     <!--会员中心入口 end-->
+    <!-- 我的订单 start-->
+    <view class="user-order">
+      <view class="box-header two_sides">
+        <view>我的订单</view>
+        <view class="all" @click="toPage('/pages/users/order/index')">
+          <text>全部订单</text>
+          <text class="iconfont icon-arrow-right"></text>
+        </view>
+      </view>
+      <view class="box-content row">
+        <navigator url="/pages/users/order/index?status=1" class="box-item col-5">
+          <text class="iconfont icon-arrow-right"></text>
+          <text>待付款</text>
+        </navigator>
+        <navigator url="/pages/users/order/index?status=2" class="box-item col-5">
+          <text class="iconfont icon-arrow-right"></text>
+          <text>待分享</text>
+          <view v-if="orderCounts.unauditedOrderCounts > 0" class="desc">
+            {{ orderCounts.unauditedOrderCounts > 99 ? '99+' : orderCounts.unauditedOrderCounts }}
+          </view>
+        </navigator>
+        <navigator url="/pages/users/order/index?status=4" class="box-item col-5">
+          <text class="iconfont icon-arrow-right"></text>
+          <text>待收货</text>
+          <view v-if="orderCounts.unauditedOrderCounts > 0" class="desc">
+            {{ orderCounts.unauditedOrderCounts > 99 ? '99+' : orderCounts.unauditedOrderCounts }}
+          </view>
+        </navigator>
+        <navigator url="/pages/users/order/index?status=5" class="box-item col-5">
+          <text class="iconfont icon-arrow-right"></text>
+          <text>待提货</text>
+          <view v-if="orderCounts.unauditedOrderCounts > 0" class="desc">
+            {{ orderCounts.unauditedOrderCounts > 99 ? '99+' : orderCounts.unauditedOrderCounts }}
+          </view>
+        </navigator>
+        <navigator url="/pages/users/order/index?status=6" class="box-item col-5">
+          <text class="iconfont icon-arrow-right"></text>
+          <text>已完成</text>
+          <view v-if="orderCounts.unsignedOrderCounts > 0" class="desc">
+            {{ orderCounts.unsignedOrderCounts > 99 ? '99+' : orderCounts.unsignedOrderCounts }}
+          </view>
+        </navigator>
+      </view>
+    </view>
+    <!-- 我的订单 end-->
+    <!-- 我的内容 start-->
+    <view class="user-order">
+      <view class="box-header two_sides"> 我的内容 </view>
+      <view class="box-content row">
+        <navigator url="/pages/users/address/addr-manage" class="box-item col-3">
+          <text class="iconfont icon-arrow-right"></text>
+          <text>我的作品</text>
+        </navigator>
+        <navigator url="/pages/users/user-goods-collection/index" class="box-item col-3">
+          <text class="iconfont icon-arrow-right"></text>
+          <text>我的评论</text>
+        </navigator>
+        <navigator url="/pages/users/foot-print/index" class="box-item col-3">
+          <text class="iconfont icon-arrow-right"></text>
+          <text>我的收藏</text>
+        </navigator>
+      </view>
+    </view>
+    <!-- 我的内容 end-->
+    <!-- 我的服务 start-->
+    <view class="user-order">
+      <view class="box-header two_sides"> 我的服务 </view>
+      <view class="box-content row">
+        <navigator url="/pages/users/address/addr-manage" class="box-item col-3">
+          <text class="iconfont icon-arrow-right"></text>
+          <text>我的课程</text>
+        </navigator>
+        <navigator url="/pages/users/user-goods-collection/index" class="box-item col-3">
+          <text class="iconfont icon-arrow-right"></text>
+          <text>我的预约</text>
+        </navigator>
+        <navigator url="/pages/users/foot-print/index" class="box-item col-3">
+          <text class="iconfont icon-arrow-right"></text>
+          <text>我的答疑</text>
+        </navigator>
+      </view>
+    </view>
+    <!-- 我的服务 end-->
+    <!-- 我的设置 start-->
+    <view class="user-order">
+      <view class="box-header two_sides"> 我的设置 </view>
+      <view class="box-content row">
+        <navigator url="/pages/users/address/addr-manage" class="box-item col-3">
+          <text class="iconfont icon-arrow-right"></text>
+          <text>修改资料</text>
+        </navigator>
+        <navigator url="/pages/users/user-goods-collection/index" class="box-item col-3">
+          <text class="iconfont icon-arrow-right"></text>
+          <text>收货地址</text>
+        </navigator>
+        <navigator url="/pages/users/foot-print/index" class="box-item col-3">
+          <text class="iconfont icon-arrow-right"></text>
+          <text>退出账号</text>
+        </navigator>
+      </view>
+    </view>
+    <!-- 我的设置 end-->
   </view>
 </template>
 
@@ -56,6 +158,7 @@ let userInfo = reactive({
   memberLevelVO: 'Lv1',
   userMobile: '1382550699x',
 })
+let orderCounts = ref({}) as any
 const toPage = (path) => {
   console.log('toPage')
 }
@@ -187,6 +290,7 @@ page {
     align-items: center;
     margin-left: 20rpx;
     margin-right: 20rpx;
+    margin-bottom: 20rpx;
 
     background: #00342e;
     border: 3px solid #ffffff;
@@ -218,6 +322,68 @@ page {
         background-color: #fcb81d;
         border-radius: 27rpx;
         padding: 10rpx 30rpx;
+      }
+    }
+  }
+
+  .user-order {
+    margin-left: 20rpx;
+    margin-right: 20rpx;
+    background-color: #fff;
+    border-radius: 10rpx;
+    margin-bottom: 20rpx;
+
+    .box-header {
+      padding: 20rpx 20rpx 0 20rpx;
+      font-size: 32rpx;
+      color: $theme-font-color;
+
+      & > view:nth-child(1) {
+        font-family: PingFangSC-Regular;
+        font-size: 32rpx;
+        color: $theme-font-color;
+      }
+
+      & > view:nth-child(2) {
+        font-family: PingFangSC-Light;
+        font-size: 24rpx;
+        color: $theme-font-color;
+        line-height: 24rpx;
+
+        .iconfont {
+          margin-left: 10rpx;
+          font-size: 24rpx;
+          color: $theme-font-color;
+        }
+      }
+    }
+
+    .box-content {
+      padding: 60rpx 0 10rpx;
+      flex-wrap: wrap;
+      .box-item {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30rpx;
+        image {
+          width: 44rpx;
+          height: 40rpx;
+        }
+
+        text {
+          margin-top: 4rpx;
+          font-family: PingFangSC-Light;
+          font-size: 24rpx;
+          color: $theme-font-color;
+        }
+
+        .desc {
+          top: -20rpx;
+          right: 80rpx;
+        }
       }
     }
   }

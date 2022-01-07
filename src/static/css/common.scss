@@ -1,0 +1,61 @@
+
+//左右浮动
+.two_sides {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    &>view:nth-child(1),
+    &>text:nth-child(1) {
+      flex: 1;
+      justify-content: flex-start;
+      text-align: left;
+    }
+    &>view:nth-child(2),
+    &>text:nth-child(2) {
+      flex: 1;
+      justify-content: flex-end;
+      text-align: right;
+    }
+}
+
+.row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+}
+  
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+  
+.col {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -moz-box-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: block;
+    width: 100%;
+}
+  
+.col-triple,.col-3 {
+    @include make-col (33.3333333333%);
+}
+  
+.col-double,.col-2 {
+    @include make-col(50%);
+}
+  
+.col-4{
+    @include make-col(25%);
+}
+
+.col-5{
+    @include make-col(20%);
+}

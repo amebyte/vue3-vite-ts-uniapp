@@ -13,6 +13,8 @@ onHide(() => {
 <style lang="scss">
 @import 'static/icon/iconfont.css';
 @import 'static/css/base.css';
+@import 'static/css/mixn.scss';
+@import 'static/css/common.scss';
 
 /* 条件编译，仅在H5平台生效 */
 // #ifdef H5

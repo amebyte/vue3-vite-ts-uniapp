@@ -1,0 +1,9 @@
+@mixin make-col($percent) {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 $percent;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 $percent;
+    -ms-flex: 0 0 $percent;
+    flex: 0 0 $percent;
+    max-width: $percent;
+}
