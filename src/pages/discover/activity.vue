@@ -20,7 +20,7 @@
       <view class="subscribe-num">已预约<text>1</text>场活动</view>
     </view>
     <!--预约次数 end-->
-    <view>
+    <view class="calendar-wrap">
       <Calendar />
     </view>
   </view>
@@ -100,5 +100,20 @@ import Calendar from '@/components/calendar/calendar.vue'
       }
     }
   }
+  .calendar-wrap {
+    background: #ffffff;
+    box-shadow: 0px 0px 14rpx 6rpx rgba(29, 233, 182, 0.11);
+    border-radius: 20rpx;
+    margin-top: 40rpx;
+    margin-bottom: 40rpx;
+    height: 280rpx;
+    overflow: hidden;
+  }
+}
+</style>
+<style lang="scss">
+@import '@/static/css/variable.scss';
+page {
+  background-color: $background-color;
 }
 </style>
