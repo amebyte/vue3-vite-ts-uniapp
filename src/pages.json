@@ -39,7 +39,7 @@
       }
     },
     {
-      "path": "pages/discover/index",
+      "path": "pages/discover-home/index",
       "style": {
         "navigationBarTitleText": "发现首页"
       }
@@ -47,12 +47,12 @@
   ],
   "subPackages": [
     {
-      "root": "pages/discover-home",
+      "root": "pages/discover",
       "pages": [
         {
-          "path": "index",
+          "path": "activity",
           "style": {
-            "navigationBarTitleText": "发现内页",
+            "navigationBarTitleText": "活动中心",
             "enablePullDownRefresh": false
           }
         }
@@ -97,7 +97,7 @@
         "text": "商城"
       },
       {
-        "pagePath": "pages/discover/index",
+        "pagePath": "pages/discover-home/index",
         "iconPath": "static/images/footer-bar-discover-icon.png",
         "selectedIconPath": "static/images/footer-bar-discover-icon-on.png",
         "text": "发现"

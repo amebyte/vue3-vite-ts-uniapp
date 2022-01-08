@@ -85,7 +85,7 @@ export default defineComponent({
         {
           url: '../../static/images/skip/activity.png',
           title: '活动',
-          path: '/pages/shop/station/index',
+          path: '/pages/discover/activity',
         },
         {
           url: '../../static/images/skip/curriculum.png',
