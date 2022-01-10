@@ -47,7 +47,7 @@
 </template>
 
 <script lang="ts">
-import { PropType, ref, toRefs, defineComponent, reactive } from 'vue'
+import { PropType, toRefs, defineComponent, reactive } from 'vue'
 import { imgUrlsType } from '@/store/modules/banner'
 
 export default defineComponent({
