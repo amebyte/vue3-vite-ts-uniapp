@@ -95,15 +95,15 @@
       <view class="box-header two_sides"> 我的内容 </view>
       <view class="box-content row">
         <navigator url="/pages/users/address/addr-manage" class="box-item col-3">
-          <text class="iconfont icon-arrow-right"></text>
+          <text class="iconfont icon-picture icon"></text>
           <text>我的作品</text>
         </navigator>
         <navigator url="/pages/users/user-goods-collection/index" class="box-item col-3">
-          <text class="iconfont icon-arrow-right"></text>
+          <text class="iconfont icon-comment icon"></text>
           <text>我的评论</text>
         </navigator>
         <navigator url="/pages/users/foot-print/index" class="box-item col-3">
-          <text class="iconfont icon-arrow-right"></text>
+          <text class="iconfont icon-love icon"></text>
           <text>我的收藏</text>
         </navigator>
       </view>
@@ -114,15 +114,15 @@
       <view class="box-header two_sides"> 我的服务 </view>
       <view class="box-content row">
         <navigator url="/pages/users/address/addr-manage" class="box-item col-3">
-          <text class="iconfont icon-arrow-right"></text>
+          <text class="iconfont icon-arrow-right icon"></text>
           <text>我的课程</text>
         </navigator>
         <navigator url="/pages/users/user-goods-collection/index" class="box-item col-3">
-          <text class="iconfont icon-arrow-right"></text>
+          <text class="iconfont icon-arrow-right icon"></text>
           <text>我的预约</text>
         </navigator>
         <navigator url="/pages/users/foot-print/index" class="box-item col-3">
-          <text class="iconfont icon-arrow-right"></text>
+          <text class="iconfont icon-arrow-right icon"></text>
           <text>我的答疑</text>
         </navigator>
       </view>
@@ -384,6 +384,7 @@ page {
 
     .box-content {
       padding: 60rpx 0 10rpx;
+      padding-top: 40rpx;
       flex-wrap: wrap;
       .box-item {
         display: flex;
@@ -395,6 +396,11 @@ page {
         image {
           width: 44rpx;
           height: 40rpx;
+        }
+
+        .icon {
+          font-size: 62rpx;
+          padding-bottom: 20rpx;
         }
 
         text {
