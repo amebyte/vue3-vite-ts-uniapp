@@ -118,7 +118,7 @@
           <text>我的课程</text>
         </navigator>
         <navigator url="/pages/users/user-goods-collection/index" class="box-item col-3">
-          <text class="iconfont icon-arrow-right icon"></text>
+          <text class="iconfont icon-calendar icon"></text>
           <text>我的预约</text>
         </navigator>
         <navigator url="/pages/users/foot-print/index" class="box-item col-3">
