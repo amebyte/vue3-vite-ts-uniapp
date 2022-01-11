@@ -93,11 +93,11 @@
         </view>
         <view class="interact-status">
           <view class="status">
-            <text class="iconfont icon-search"></text>
+            <text class="iconfont icon-love"></text>
             <text class="txt">6544</text>
           </view>
           <view class="status">
-            <text class="iconfont icon-search"></text>
+            <text class="iconfont icon-comment"></text>
             <text class="txt">65</text>
           </view>
           <view class="status">
