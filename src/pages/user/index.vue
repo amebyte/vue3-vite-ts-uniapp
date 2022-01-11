@@ -133,15 +133,15 @@
       <view class="box-header two_sides"> 我的设置 </view>
       <view class="box-content row">
         <navigator url="/pages/users/address/addr-manage" class="box-item col-3">
-          <text class="iconfont icon-arrow-right"></text>
+          <text class="iconfont icon-data icon"></text>
           <text>修改资料</text>
         </navigator>
         <navigator url="/pages/users/user-goods-collection/index" class="box-item col-3">
-          <text class="iconfont icon-arrow-right"></text>
+          <text class="iconfont icon-address icon"></text>
           <text>收货地址</text>
         </navigator>
         <navigator url="/pages/users/foot-print/index" class="box-item col-3">
-          <text class="iconfont icon-arrow-right"></text>
+          <text class="iconfont icon-sign-out icon"></text>
           <text>退出账号</text>
         </navigator>
       </view>
