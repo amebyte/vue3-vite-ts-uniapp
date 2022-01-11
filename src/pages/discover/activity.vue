@@ -15,14 +15,36 @@
     <view class="info-bar">
       <view class="date">
         <view class="day">07</view>
-        <view class="year-month">/2022.06 <text class="iconfont icon-arrow-down-bg"></text></view>
+        <view class="year-month">/2022.06 <text class="iconfont icon-arrow-down"></text></view>
       </view>
       <view class="subscribe-num">已预约<text>1</text>场活动</view>
     </view>
     <!--预约次数 end-->
+    <!--日历 start-->
     <view class="calendar-wrap">
       <Calendar />
     </view>
+    <!--日历 end-->
+    <view class="activity-sessions"> - 当天共 <text>3</text> 场活动 - </view>
+    <!--日历 end-->
+    <!--预约列表 start-->
+    <view class="list">
+      <view class="item">
+        <view class="time">
+          <text class="iconfont icon-time"></text>
+          9:00-10:00
+        </view>
+        <view class="title"> 活动主题-活动标题名字活动标题名字活动标题名字活动标题名字活动标题名字活动标题名字 </view>
+        <view class="action">
+          <view class="l">
+            <text class="iconfont icon-people"></text>
+            限定 20 人
+          </view>
+          <view class="r"></view>
+        </view>
+      </view>
+    </view>
+    <!--预约列表 end-->
   </view>
 </template>
 
@@ -84,7 +106,10 @@ import Calendar from '@/components/calendar/calendar.vue'
         font-weight: 600;
         color: #009688;
         .iconfont {
-          color: #dbdbdb;
+          font-size: 22rpx;
+          color: #fff;
+          background-color: #dbdbdb;
+          border-radius: 50%;
         }
       }
     }
@@ -108,6 +133,61 @@ import Calendar from '@/components/calendar/calendar.vue'
     margin-bottom: 40rpx;
     height: 280rpx;
     overflow: hidden;
+  }
+  .activity-sessions {
+    text-align: center;
+    font-size: 24rpx;
+    font-family: PingFang SC;
+    font-weight: bold;
+    color: #00beac;
+    margin-top: 30rpx;
+    margin-bottom: 40rpx;
+    text {
+      font-size: 32rpx;
+      color: #009688;
+    }
+  }
+  .list {
+    .item {
+      height: 246rpx;
+      border: 3rpx solid #ffffff;
+      background: linear-gradient(200deg, #2fb383 0%, #18a86b 100%);
+      box-shadow: 0px 0px 14rpx 6rpx rgba(29, 233, 182, 0.11);
+      border-radius: 20rpx;
+      padding: 20rpx;
+
+      .time {
+        font-size: 32rpx;
+        font-family: Hiragino Sans GB;
+        font-weight: normal;
+        color: #ebfffd;
+        .iconfont {
+          font-size: 32rpx;
+        }
+      }
+      > .title {
+        padding-top: 30rpx;
+        padding-bottom: 30rpx;
+        font-size: 35rpx;
+        font-family: PingFang SC;
+        font-weight: bold;
+        color: #ffffff;
+        @extend .line1;
+      }
+      .action {
+        display: flex;
+        justify-content: space-between;
+        .l {
+          font-size: 32rpx;
+          font-family: PingFang SC;
+          font-weight: 400;
+          color: #ebfffd;
+          .iconfont {
+            font-size: 40rpx;
+          }
+        }
+      }
+    }
   }
 }
 </style>
