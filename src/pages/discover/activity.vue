@@ -40,7 +40,21 @@
             <text class="iconfont icon-people"></text>
             限定 20 人
           </view>
-          <view class="r"></view>
+          <view class="r">立即预约</view>
+        </view>
+      </view>
+      <view class="item full">
+        <view class="time">
+          <text class="iconfont icon-time"></text>
+          9:00-10:00
+        </view>
+        <view class="title"> 活动主题-活动标题名字活动标题名字活动标题名字活动标题名字活动标题名字活动标题名字 </view>
+        <view class="action">
+          <view class="l">
+            <text class="iconfont icon-people"></text>
+            限定 20 人
+          </view>
+          <view class="r">人数已满</view>
         </view>
       </view>
     </view>
@@ -155,7 +169,7 @@ import Calendar from '@/components/calendar/calendar.vue'
       box-shadow: 0px 0px 14rpx 6rpx rgba(29, 233, 182, 0.11);
       border-radius: 20rpx;
       padding: 20rpx;
-
+      margin-bottom: 40rpx;
       .time {
         font-size: 32rpx;
         font-family: Hiragino Sans GB;
@@ -177,6 +191,7 @@ import Calendar from '@/components/calendar/calendar.vue'
       .action {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         .l {
           font-size: 32rpx;
           font-family: PingFang SC;
@@ -184,6 +199,43 @@ import Calendar from '@/components/calendar/calendar.vue'
           color: #ebfffd;
           .iconfont {
             font-size: 40rpx;
+          }
+        }
+        .r {
+          background-color: #ffffff;
+          border-radius: 27rpx;
+          font-size: 26rpx;
+          font-family: PingFang SC;
+          font-weight: 400;
+          color: #21ac74;
+          padding: 10rpx 20rpx;
+        }
+      }
+      &.full {
+        border: 3rpx solid #ffffff;
+        background: linear-gradient(200deg, #fffeff 0%, #d7fffe 100%);
+        box-shadow: 0px 0px 14rpx 6rpx rgba(29, 233, 182, 0.11);
+        border-radius: 20rpx;
+        .time {
+          color: #009688;
+          .iconfont {
+            color: #38f8d4;
+          }
+        }
+        > .title {
+          color: #009688;
+        }
+        .action {
+          .l {
+            color: #009688;
+            .iconfont {
+              color: #38f8d4;
+            }
+          }
+          .r {
+            border: 3rpx solid #009688;
+            border-radius: 27rpx;
+            color: #009688;
           }
         }
       }
