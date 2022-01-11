@@ -114,7 +114,7 @@
       <view class="box-header two_sides"> 我的服务 </view>
       <view class="box-content row">
         <navigator url="/pages/users/address/addr-manage" class="box-item col-3">
-          <text class="iconfont icon-arrow-right icon"></text>
+          <text class="iconfont icon-subject-talk icon"></text>
           <text>我的课程</text>
         </navigator>
         <navigator url="/pages/users/user-goods-collection/index" class="box-item col-3">
@@ -122,7 +122,7 @@
           <text>我的预约</text>
         </navigator>
         <navigator url="/pages/users/foot-print/index" class="box-item col-3">
-          <text class="iconfont icon-arrow-right icon"></text>
+          <text class="iconfont icon-question icon"></text>
           <text>我的答疑</text>
         </navigator>
       </view>
