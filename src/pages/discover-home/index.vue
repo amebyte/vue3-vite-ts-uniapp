@@ -101,7 +101,7 @@
             <text class="txt">65</text>
           </view>
           <view class="status">
-            <text class="iconfont icon-search"></text>
+            <text class="iconfont icon-uninterested"></text>
             <text class="txt">不感兴趣</text>
           </view>
         </view>
