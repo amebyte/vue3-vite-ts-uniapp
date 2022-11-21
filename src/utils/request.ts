@@ -79,7 +79,7 @@ type Methods = typeof requestOptions[number]
 const request: { [key in Methods]?: Function } = {}
 
 requestOptions.forEach((method) => {
-  const m = method.toUpperCase as unknown as RequestOptionsMethod
+  const m = method.toUpperCase() as unknown as RequestOptionsMethod
   request[method] = (api, data, opt, params) => baseRequest(api, m, data, opt || {}, params)
 })
 
